@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /assets/lang/
+Disallow: /*lang=kk
+Disallow: /*lang=en
+
+User-agent: AdsBot-Google
+User-agent: AdsBot-Google-Mobile
+Allow: /
+Disallow: /assets/lang/
+Disallow: /*lang=kk
+Disallow: /*lang=en
+
+Sitemap: https://songokura.github.io/yellowdesign/sitemap.xml
