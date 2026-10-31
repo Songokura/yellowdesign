@@ -298,8 +298,8 @@ figure{margin:0}
 
 /* Руководитель */
 
-.f-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:96px;align-items:center}
-.f-img{aspect-ratio:4/5;overflow:hidden;outline:1px solid var(--yellow);outline-offset:14px;margin:15px}
+.f-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:88px;align-items:center}
+.f-img{aspect-ratio:3/4;overflow:hidden;outline:1px solid var(--yellow);outline-offset:14px;margin:15px}
 .f-img img{object-position:50% 18%}
 .f-lead{margin-top:28px;font:400 clamp(24px,2.1vw,30px)/1.32 var(--serif);color:var(--ink)}
 .f-list{display:grid;gap:12px;margin:36px 0 26px;font-size:16px}
@@ -307,6 +307,41 @@ figure{margin:0}
 .f-list li::before{content:"";position:absolute;left:0;top:.75em;width:12px;height:1px;background:var(--ink)}
 .f-quiet{font-size:14px;color:var(--muted)}
 .f-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+
+/* Манифест */
+.manifest{background:var(--yellow);color:var(--ink);padding:150px 0 140px}
+.kicker-ink{color:var(--ink)}
+.kicker-ink::before{height:2px}
+.man-h{font:500 clamp(40px,5.1vw,82px)/1.04 var(--serif);letter-spacing:-.018em;color:var(--ink);margin-bottom:48px}
+.link-ink{border-color:rgba(22,21,19,.35)}
+.link-ink:hover{border-color:var(--ink)}
+
+/* Отзывы */
+.reviews{background:var(--stone)}
+.rev-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:64px}
+.rev-head h2{font:500 clamp(36px,3.7vw,56px)/1.06 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+.rev-rate{display:inline-flex;align-items:baseline;gap:12px;color:var(--ink);text-decoration:none;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:6px;transition:border-color .25s var(--ease)}
+.rev-rate:hover{border-color:var(--ink)}
+.rev-rate b{font:300 44px/1 var(--sans);letter-spacing:-.02em;box-shadow:inset 0 -.18em 0 var(--yellow)}
+.rev-rate svg{align-self:center;transition:transform .3s var(--ease)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.rev{display:flex;flex-direction:column;margin:0;padding:44px 40px 8px 0}
+.rev+.rev{padding-left:40px;border-left:1px solid var(--line)}
+.rev blockquote{margin:0 0 32px;font:400 clamp(21px,1.75vw,25px)/1.36 var(--serif);color:var(--ink)}
+.rev blockquote::before{content:"«";display:block;font:500 64px/.6 var(--serif);color:var(--yellow-2);margin-bottom:14px}
+.rev figcaption{margin-top:auto;display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted)}
+.rev figcaption b{font-weight:500;font-size:16px;color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.rev-rate:hover svg{transform:translateX(3px)}}
+@media (max-width:900px){
+  .rev-grid{grid-template-columns:minmax(0,1fr)}
+  .rev,.rev+.rev{padding:36px 0;border-left:0}
+  .rev+.rev{border-top:1px solid var(--line)}
+}
+@media (max-width:760px){
+  .manifest{padding:96px 0 88px}
+  .man-h{font-size:34px;line-height:1.1;margin-bottom:36px}
+  .rev-head{margin-bottom:40px}
+}
 
 /* Жёлтая полоса */
 .band{background:var(--yellow);color:var(--ink);padding:96px 0}
