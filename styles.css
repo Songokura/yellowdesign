@@ -269,7 +269,7 @@ figure{margin:0}
 .wide-note{font:400 clamp(20px,1.7vw,24px)/1.4 var(--serif);color:var(--ink)}
 .wide-fig{aspect-ratio:2/1;overflow:hidden;background:var(--stone)}
 .wide-fig picture{display:block;width:100%;height:100%}
-.wide-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start;margin-top:36px}
+.wide-foot{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:start;margin-top:36px}
 .wide-cap .link{margin-top:24px}
 .wide-foot .pal{margin-top:6px}
 .pstick{position:sticky;top:var(--hdr);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:32px;margin:0 calc(-1*var(--gut)) 56px;padding:14px var(--gut);background:var(--paper);border-bottom:1px solid var(--line)}

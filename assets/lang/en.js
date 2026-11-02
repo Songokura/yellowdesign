@@ -9,13 +9,13 @@ window.SITE_EN={
   "nav_studio": "Studio",
   "nav_contacts": "Contacts",
   "cta_short": "Discuss a project",
-  "hero_kicker": "Astana · Private Interior Design · since 2023",
-  "hero_h1": "Interior design for apartments and houses in Astana",
-  "hero_lead": "7 of the studio's 8 projects are TANU Design Award 2026 finalists. A project in 2⁠-⁠6 weeks, free measurement, procurement and supervision on us.",
+  "hero_kicker": "Interior design studio · Astana · since 2023",
+  "hero_h1": "Bespoke interior design for apartments and houses in Astana",
+  "hero_lead": "We develop the design project and support it through to the end of renovation: procurement, designer supervision and trusted contractor teams. Site measurement is free.",
   "cta_private": "Discuss a private project",
-  "hero_quiz": "Interior passport in 3 minutes",
-  "hero_ig": "Projects and process on Instagram",
-  "intro_h": "We design private interiors - more than 8,000 m² in three years - and see them through to completion ourselves: drawings, procurement, build teams, author's supervision. You won't have to coordinate dozens of contractors.",
+  "hero_quiz": "Take the Interior Passport test",
+  "hero_ig": "Studio projects on Instagram",
+  "intro_h": "Yellow Design is a bespoke studio that creates individual interiors and takes on their implementation: drawings, procurement, contractor teams and designer supervision. The studio portfolio exceeds 8,000 m².",
   "fact_1": "of designed interiors",
   "fact_2t": "Top 100",
   "fact_2": "designers and architects of Kazakhstan",
@@ -23,19 +23,19 @@ window.SITE_EN={
   "fact_3": "country houses we lead",
   "fact_4t": "7 of 8",
   "fact_4": "studio projects are TANU Design Award 2026 finalists",
-  "proj_h": "Projects we lead",
-  "proj_lead": "Apartments in premium residential complexes, country houses from 350 to 700 m², SPA and executive offices. Astana, Almaty, Borovoe, Karaganda and Shymkent. Every project has its own palette - we take it straight from the visualisation.",
+  "proj_h": "Studio projects",
+  "proj_lead": "Apartments in premium residential complexes, country houses of 350 to 700 m², SPA and offices in Astana, Almaty, Burabay, Karaganda and Shymkent. Each project is shown with its colour palette.",
   "p1_type": "Apartment · neoclassical",
-  "p1_txt": "Marble, brass and mouldings, tinted glass screens between the living and dining rooms. A bedroom with a semicircular panoramic window.",
+  "p1_txt": "Marble and brass finishes, mouldings on the walls. Tinted glass partitions divide the living and dining rooms, and the bedroom has a panoramic semicircular window.",
   "proj_like": "Discuss a similar project",
   "p2_type": "Country house",
-  "p2_txt": "Kazakh ornament in a contemporary living room: carved panels, a dastarkhan by the sofa, dark wood and pale stone. Children’s rooms, study and dressing rooms speak the same language.",
+  "p2_txt": "A contemporary living room with Kazakh ornament: carved panels, dark wood and light stone. The children's rooms, study and dressing rooms follow the same style.",
   "p3_type": "Commercial · over 400 m²",
-  "p3_txt": "Reception, lounge, massage rooms, hammam and sauna. Stone-like textured plaster and light hidden in niches and along the perimeter.",
+  "p3_txt": "Reception, lounge, massage rooms, hammam and sauna. Stone-effect textured plaster, concealed lighting in niches and along the ceiling perimeter.",
   "proj_like_biz": "Discuss a commercial project",
   "rev_h": "Client reviews",
   "rev_rate": "5 reviews on 2GIS",
-  "lane_h": "More projects",
+  "lane_h": "Other projects",
   "prev": "Previous",
   "next": "Next",
   "c_park": "Kitchen",
@@ -46,49 +46,49 @@ window.SITE_EN={
   "c_vela": "Study",
   "c_spa": "Lounge",
   "ig_more": "More projects on Instagram",
-  "srv_h": "Apartments, houses and spaces for business",
+  "srv_h": "Design projects for apartments, houses and commercial spaces",
   "s1_h": "Apartments",
-  "s1_p": "Premium residential complexes. Replanning, storage systems, lighting scenes.",
+  "s1_p": "Apartments in premium residential complexes: replanning, storage systems, lighting scenarios.",
   "s2_h": "Country houses",
-  "s2_p": "Cottages of 350 to 700 m²: floor plans, staircases, lighting, procurement.",
+  "s2_p": "Houses of 350 to 700 m²: floor planning, staircases, lighting and procurement.",
   "s3_h": "Penthouses",
-  "s3_p": "Large floor areas and panoramic glazing. Zoning without solid walls.",
+  "s3_p": "Zoning of large areas with panoramic glazing, without solid partitions.",
   "s4_h": "Commercial",
-  "s4_p": "SPAs, coffee shops, salons. An interior guests remember and that stands up to the flow.",
+  "s4_p": "SPA complexes and coffee shops: a recognisable interior and materials designed for heavy guest traffic.",
   "s5_h": "Offices and studies",
   "s5_p": "Offices in business centres and executive studies.",
   "srv_cta": "Get a price",
-  "proc_h": "Budget, timing and responsibilities are agreed before work begins",
-  "proc_lead": "The design project is ready in 2⁠-⁠6 weeks depending on the area. After that we stay with you down to the last socket.",
+  "proc_h": "Budget, timeline and responsibilities are agreed before work begins",
+  "proc_lead": "Developing the design project takes from 2 weeks to 1.5 months, depending on the area. After that, the studio supports the renovation until completion.",
   "st1_h": "Measurement and layout review",
-  "st1_p": "A free site visit. We show right away what can be changed in the layout.",
+  "st1_p": "A free site visit. On site we review the layout and propose possible changes.",
   "st2_h": "The DNA of your space",
-  "st2_p": "We study how you live: guests, storage, mornings, evenings. The concept grows from that.",
+  "st2_p": "We study the client's lifestyle: family, entertaining, storage, daily routine. The concept is developed on this basis.",
   "st3_h": "Drawings and 3D",
-  "st3_p": "A package for the builders: plans, electrics, lighting, wall elevations, materials schedule. Visualisation of the rooms.",
+  "st3_p": "A full set of documents for builders: plans, electrics, lighting, wall elevations, materials schedule and 3D visualisation.",
   "st4_h": "Procurement",
-  "st4_p": "We select and buy materials and furniture with you or for you. The budget is adapted to the project.",
+  "st4_p": "We select and purchase materials and furniture together with the client or according to an agreed list. The budget is adapted to the project.",
   "st5_h": "Build and supervision",
-  "st5_p": "Three trusted build teams. Regular site visits and checks against the project.",
+  "st5_p": "Works are carried out by three trusted contractor teams. Designer supervision: regular site visits and compliance checks.",
   "quiz_kicker": "Interior passport",
   "quiz_h": "Find out what your home should be like, even if you don’t yet know which style you like",
-  "quiz_lead": "12 questions not about styles but about habits, character and the way you live. As you answer, the palette of your home is assembled from your answers - just like for each of our projects.",
+  "quiz_lead": "12 questions about your habits, character and lifestyle. Based on your answers you receive a passport of your future interior: a colour palette, an atmosphere and three recommendations from the designer.",
   "qz_back": "Back",
   "pass_of": "of 12 answers",
   "pass_t": "Interior passport",
-  "pass_hint": "Each answer adds a colour. After the twelfth, the palette becomes yours.",
+  "pass_hint": "Each answer adds a new colour to the palette. After the twelfth question the passport is ready.",
   "res_kicker": "Your interior passport",
   "res_atm": "Atmosphere",
   "res_pal": "Palette",
   "res_recs": "Three recommendations from the designer",
-  "res_like": "Close to our project:",
+  "res_like": "A similar studio project:",
   "res_phone": "Phone number",
-  "res_err": "Please enter your phone number so we can reply",
+  "res_err": "Please enter a contact phone number",
   "res_send": "Send the passport via WhatsApp",
-  "res_note": "Madina will look at your passport and suggest a layout that fits the way you live.",
+  "res_note": "Madina Ismailova will review the passport and contact you to discuss the project.",
   "res_again": "Start over",
   "pr_h": "Design project price per square metre",
-  "pr_lead": "Free measurement. Instalments for the design project. Procurement comes as a gift with the Business plan.",
+  "pr_lead": "Site measurement is free, and the design project can be paid in instalments. Procurement is included free of charge in the Business package.",
   "t1_h": "Base",
   "t1_s": "Precise drawings and layout - a solid foundation for renovation",
   "per_m": "per m²",
@@ -103,9 +103,9 @@ window.SITE_EN={
   ],
   "t1_g": "Gift: contacts of shops and suppliers",
   "t_cta": "Discuss this plan",
-  "t_pop": "Turnkey private project",
+  "t_pop": "Turnkey project",
   "t2_h": "Standard",
-  "t2_s": "Full set of drawings, visualisation and procurement trips",
+  "t2_s": "Full set of drawings, visualisations and procurement trips",
   "t2_l": [
    "Everything in Base",
    "Designer consultation and replanning",
@@ -114,9 +114,9 @@ window.SITE_EN={
    "Finishing materials schedule",
    "3D visualisation"
   ],
-  "t2_g": "Gift: 4 trips to source finishing materials",
+  "t2_g": "Included free: 4 procurement trips (purchase of finishing materials)",
   "t3_h": "Business",
-  "t3_s": "Author’s concept and guidance - from idea to completion",
+  "t3_s": "Bespoke concept and supervision - a turnkey project",
   "t3_l": [
    "Concept development",
    "Layout solution",
@@ -125,24 +125,24 @@ window.SITE_EN={
    "3D visualisation",
    "Author’s guidance"
   ],
-  "t3_g": "Gift: procurement - purchase of finishing materials",
+  "t3_g": "Included free: procurement (purchase of finishing materials)",
   "nz_h": "Author’s supervision",
-  "nz_p": "Regular site visits, checks against the project, advice for the builders and on-site decisions on complex details. Price on request, depending on scope and build schedule.",
+  "nz_p": "Regular site visits, compliance checks against the project, consultations for builders and on-site help with complex details. The cost is calculated based on the scope and schedule of works.",
   "nz_cta": "Ask about supervision",
-  "pr_note": "Any plan can be extended with supervision, 3D of individual rooms and full procurement.",
+  "pr_note": "Any package can be extended with designer supervision, 3D visualisation of individual rooms and full procurement.",
   "f_kicker": "Head of the studio",
   "f_h": "Madina Ismailova",
-  "f_lead": "Warm palettes, natural materials, light hidden in niches. She handles procurement herself: every piece in a project is chosen for its owners.",
-  "f_1": "Named among the top 100 designers and architects of Kazakhstan",
+  "f_lead": "Madina's signature is warm palettes, natural materials and well-considered lighting. She manages procurement for every project personally.",
+  "f_1": "Madina Ismailova is among the top 100 designers and architects of Kazakhstan",
   "f_2": "Member of the Association of Architects and Designers of Kazakhstan",
   "f_3": "7 of the studio's 8 projects are TANU Design Award 2026 finalists",
-  "f_4": "8 years in renovation and project management, studio since 2023",
-  "f_quiet": "We work confidentially: we never publish clients’ names or addresses.",
+  "f_4": "8 years of experience in renovation and project management, studio founded in 2023",
+  "f_quiet": "Confidentiality: client addresses and names are not published.",
   "f_cta": "Message Madina",
-  "f_ig": "Studio days on Instagram",
+  "f_ig": "Studio work on Instagram",
   "c_h": "Discuss a private project",
-  "office_cap": "We meet at our office in the Erzo business centre, 4th floor, by appointment. Pictured: a study from our project in The ONE.",
-  "c_lead": "Tell us about the area and timing. Measurement and an express layout review are free, instalments available for the design project. We reply on WhatsApp and take requests outside working hours too.",
+  "office_cap": "The ONE",
+  "c_lead": "Tell us the type of property and its area, and we will reply on WhatsApp. Requests are accepted outside working hours too.",
   "fm_name": "Name",
   "fm_phone": "Phone",
   "fm_obj": "Property",
@@ -155,7 +155,7 @@ window.SITE_EN={
   "fm_send": "Send via WhatsApp",
   "fm_note": "Measurement and express layout review are free.",
   "c_addr": "Astana, 27 Tokpanov St, Erzo business centre, 4th floor, office 414",
-  "c_hours": "Mon-Fri 10:00-18:00, Saturday by appointment",
+  "c_hours": "Mon-Fri 10:00-18:00, Saturday by appointment, Sunday closed",
   "c_2gis": "Reviews and directions on 2GIS",
   "c_ig": "Projects on Instagram",
   "ph_office": "Office photo",
@@ -163,14 +163,14 @@ window.SITE_EN={
   "ftr_t": "Private Interior Design. Interior design studio in Astana.",
   "bin": "BIN",
   "mb_call": "Call",
-  "pass_sample": "sample",
-  "pass_hint0": "This is what one of our clients' passports looks like. Your answers will build your own palette.",
+  "pass_sample": "of 12 · sample",
+  "pass_hint0": "A sample of a completed passport. Your palette will be built from your own answers.",
   "lane_nick": "@madina_ismailova_dsgn",
-  "fm_ok": "Thank you! WhatsApp is opening, just send the message.",
-  "perk_1": "Free measurement and express layout review",
+  "fm_ok": "Thank you! WhatsApp will open now, please send the prepared message.",
+  "perk_1": "Free site measurement and express layout review",
   "perk_2": "Instalments for the design project",
   "perk_3": "Procurement as a gift in the Business plan",
-  "perk_4": "Project in 2⁠-⁠6 weeks, depending on area",
+  "perk_4": "Design project timeline - from 2 weeks to 1.5 months",
   "meta_title": "Yellow Design - interior design studio in Astana",
   "meta_desc": "Bespoke interiors for apartments, houses, penthouses, SPAs and offices. Design project from 8 000 ₸/m², free measurement.",
   "hero_cap": "Dara Residence · living and dining room",
@@ -202,30 +202,24 @@ window.SITE_EN={
   "pal_clay": "Clay",
   "pal_rattan": "Rattan",
   "p4_type": "Apartment · modern classic",
-  "p4_txt": "A living-dining room across the whole width of the apartment: floor-to-ceiling shelving, ring lights, round armchairs and tinted glass doors.",
+  "p4_txt": "A living and dining room spanning the full width of the apartment: floor-to-ceiling shelving, ring pendants, round armchairs and tinted glass doors.",
   "c_aqua2": "Hallway",
-  "site_cap": "Vela Village, walk-in wardrobe. Every lighting and facade detail is in the drawings before work begins.",
-  "award_cap": "Seven projects passed a strict selection and reached the final of TANU Design Award 2026 among architects and designers from Kazakhstan and abroad.",
-  "f_5": "Country houses of 350-700 m², apartments in premium buildings, SPAs over 400 m²",
-  "f_6": "Three trusted build teams and suppliers the studio works with on a regular basis",
-  "award_h": "7 of the studio's 8 projects reached the final of an international award",
+  "site_cap": "Vela Village. Dressing room lighting and fronts are detailed in the drawings before work begins.",
+  "award_cap": "The studio submitted eight projects to TANU Design Award 2026, and seven of them reached the final.",
+  "f_5": "Portfolio includes country houses of 350-700 m², apartments in premium buildings and an SPA complex of over 400 m²",
+  "f_6": "We work only with trusted contractor teams and suppliers",
+  "award_h": "Seven studio projects in the final of an international competition",
   "hero_tabs_aria": "Projects in the palette",
-  "hs1": "Dara Residence",
-  "hs1_r": "living room",
+  "hs1": "The ONE",
   "hs2": "Parkside",
-  "hs2_r": "bedroom",
   "hs3": "Vela Village",
-  "hs3_r": "bedroom",
-  "p2_facts": [
-   "Living room, dining and kitchen as one 70 m² space",
-   "Carved panels to the studio's sketches, solid oak",
-   "Four bedrooms, a study, two walk-in wardrobes"
-  ],
-  "p4_note": "The full-wall shelving was built to the size of the client's library; the ring lights hold three lighting scenes: dinner, guests, evening.",
   "pal_silk2": "Silk",
-  "rev_fig": "Green Line Aqua · bedroom",
+  "rev_fig": "Green Line Aqua",
   "rev_stars": "Rated 5 out of 5",
-  "c_vela2": "Children's room"
+  "c_vela2": "Children's room",
+  "p5_type": "Apartment · contemporary",
+  "p5_txt": "A bright living room with panoramic windows and ring pendants, a kitchen with an island, studies finished in dark wood. One warm palette across the whole apartment.",
+  "p3_h": "SPA complex"
  },
  "w": {
   "gen": "Hello! I would like to discuss a private interior project.",
@@ -247,7 +241,7 @@ window.SITE_EN={
    ]
   ],
   [
-   "You are home after a hard day. What do you need first?",
+   "You come home after a difficult day. What do you need first?",
    [
     "Dim light and quiet",
     "Voices of loved ones and the smell of dinner",
@@ -283,12 +277,12 @@ window.SITE_EN={
    ]
   ],
   [
-   "Your desk right now is...",
+   "What does your desk look like right now?",
    [
     "Empty: just a laptop",
     "Books and notes, but I know where everything is",
     "Flowers, a candle and pretty little things",
-    "I work anywhere, even on the sofa"
+    "I work wherever is convenient: at a desk, on the sofa, in the kitchen"
    ]
   ],
   [
@@ -301,16 +295,16 @@ window.SITE_EN={
    ]
   ],
   [
-   "Things with history at home...",
+   "Things with history in your home are...",
    [
-    "A must: heirlooms and antiques",
+    "A must: family heirlooms and antiques",
     "One or two, as an accent",
     "I prefer new and clean",
-    "Natural matters more: stone, wood, plants"
+    "Natural materials matter more: stone, wood, plants"
    ]
   ],
   [
-   "Which sound feels like home?",
+   "Which sound do you associate with home?",
    [
     "Silence",
     "Children laughing and a busy kitchen",
@@ -319,10 +313,10 @@ window.SITE_EN={
    ]
   ],
   [
-   "What irritates you in other people’s interiors?",
+   "What do you dislike in other people's interiors?",
    [
     "Clutter and too many colours",
-    "Hotel-like coldness",
+    "A cold, hotel-like atmosphere",
     "Random things and cheap materials",
     "Too little light and air"
    ]
@@ -333,7 +327,7 @@ window.SITE_EN={
     "I weigh things slowly, I need clarity",
     "I consult my family",
     "Quickly, based on facts",
-    "The decision is mine, and so is the responsibility"
+    "I take on both the decision and the responsibility"
    ]
   ],
   [
@@ -351,9 +345,9 @@ window.SITE_EN={
    "name": "Quiet Light",
    "desc": "A bright home that rests the eyes: soft shades, tactile fabrics and light without harsh shadows.",
    "recs": [
-    "Light in three scenes: morning, work, evening. All on dimmers.",
-    "Floor-to-ceiling hidden storage: only what you love stays in sight.",
-    "Linen, wool, microcement: texture instead of decor."
+    "Three lighting scenarios - morning, work, evening - with dimming.",
+    "Closed floor-to-ceiling storage, with only selected items on display.",
+    "Textured materials - linen, wool, microcement - instead of decorative objects."
    ],
    "pal": [
     "Milk",
@@ -365,11 +359,11 @@ window.SITE_EN={
   },
   "o": {
    "name": "Warm Hearth",
-   "desc": "A house that is never empty: warm wood, a large kitchen-living room and a seat at the table for everyone.",
+   "desc": "A home for a large family: warm wood, a spacious kitchen-living room and a shared table for everyone.",
    "recs": [
-    "A kitchen island as the heart of the house, 8-10 seats at the table.",
-    "Wood on floors and furniture, fabrics that survive children.",
-    "A separate quiet room for the grown-ups."
+    "A kitchen with an island at the heart of the home, a dining table for 8-10.",
+    "Wood in floors and furniture, hard-wearing fabrics for a family with children.",
+    "A separate study or library for the adults."
    ],
    "pal": [
     "Cream",
@@ -381,11 +375,11 @@ window.SITE_EN={
   },
   "g": {
    "name": "Clean Line",
-   "desc": "A graphic interior built on contrast: precise geometry, few objects and one bold detail.",
+   "desc": "A graphic, high-contrast interior: precise geometry, minimal objects and one expressive detail.",
    "recs": [
-    "Handle-less, trim-free planes, doors in the wall colour.",
-    "One art piece on the main wall instead of ten small things.",
-    "Track lighting: accents change with your plans."
+    "Handleless fronts, concealed doors in the wall colour.",
+    "One art piece on the main wall instead of lots of small decor.",
+    "Track lighting that is easy to reconfigure for a new furniture layout."
    ],
    "pal": [
     "White",
@@ -397,11 +391,11 @@ window.SITE_EN={
   },
   "r": {
    "name": "Residence",
-   "desc": "Neoclassicism with character: marble, brass, mouldings and symmetry. Things you pass down.",
+   "desc": "Neoclassical: marble, brass, mouldings and symmetry. Furniture and materials that last for decades.",
    "recs": [
-    "Symmetrical compositions and mouldings scaled to the ceiling height.",
-    "Natural marble in one or two zones, not everywhere.",
-    "A lit display case or niche for your collection."
+    "Symmetrical compositions and mouldings matched to the ceiling height.",
+    "Natural marble as an accent in one or two zones.",
+    "A lit display cabinet or niche for a collection."
    ],
    "pal": [
     "Ivory",
@@ -413,11 +407,11 @@ window.SITE_EN={
   },
   "n": {
    "name": "Retreat",
-   "desc": "A home like a spa: stone, wood, plants, water and soft warm light.",
+   "desc": "An SPA-inspired interior: stone, wood, living plants and soft warm light.",
    "recs": [
-    "The bathroom as a place to rest: underfloor heating, niches, perimeter light.",
+    "The bathroom as a relaxation zone: underfloor heating, niches and perimeter lighting.",
     "Textured plaster and stone instead of wallpaper.",
-    "Living plants built into the layout."
+    "Spaces for living plants built into the layout."
    ],
    "pal": [
     "Mist",
@@ -429,11 +423,11 @@ window.SITE_EN={
   },
   "k": {
    "name": "Evening Club",
-   "desc": "Deep tones, dark wood, leather and evening light. An interior for thinking and hosting.",
+   "desc": "Deep tones, dark wood, leather and warm evening light. An interior for work and entertaining.",
    "recs": [
-    "Wall panelling in dark wood veneer.",
-    "Warm 2700K light and sconces instead of ceiling chandeliers.",
-    "A library or bar as the centre of the living room."
+    "Wall panels in dark wood veneer.",
+    "Warm 2700 K light: wall and floor lamps instead of overhead lighting.",
+    "A library or bar as the focal point of the living room."
    ],
    "pal": [
     "Parchment",
