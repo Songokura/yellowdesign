@@ -165,7 +165,7 @@ window.SITE_EN={
   "mb_call": "Call",
   "pass_sample": "of 12 · sample",
   "pass_hint0": "A sample of a completed passport. Your palette will be built from your own answers.",
-  "lane_nick": "@madina_ismailova_dsgn",
+  "lane_nick": "@yellow_design_kz",
   "fm_ok": "Thank you! WhatsApp will open now, please send the prepared message.",
   "perk_1": "Free site measurement and express layout review",
   "perk_2": "Instalments for the design project",
