@@ -48,6 +48,7 @@ window.SITE_EN={
   "c_dara": "Kitchen",
   "c_vela": "Kitchen",
   "c_spa": "Waiting area",
+  "c_spa3": "Hammam",
   "ig_more": "More projects on Instagram",
   "srv_h": "Apartments, houses and spaces for business",
   "s1_h": "Apartments",
