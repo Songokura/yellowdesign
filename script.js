@@ -8,13 +8,13 @@ var W={
  "proj": "Здравствуйте! Хочу обсудить проект, похожий на «{x}».",
  "srv": "Здравствуйте! Хочу узнать стоимость дизайн-проекта: {x}.",
  "tar": "Здравствуйте! Интересует тариф «{x}».",
- "nadzor": "Здравствуйте! Интересует авторский надзор, хочу узнать стоимость.",
+ "nadzor": "Здравствуйте! Интересует авторское сопровождение, хочу узнать стоимость.",
  "form": "Здравствуйте! Заявка с сайта.\nИмя: {n}\nТелефон: {p}\nОбъект: {o}\nПлощадь: {a} м²",
  "quiz": "Здравствуйте! Мой паспорт интерьера: «{x}».\nПалитра: {c}\nТелефон: {p}\nХочу обсудить проект."
 };
 var WA_MAP={
 hdr:['gen'],band:['gen'],menu:['gen'],hero:['gen'],mbar:['gen'],founder:['gen'],
-proj_one:['proj','The ONE'],proj_dara:['proj','Dara Residence'],proj_vela:['proj','Vela Village'],proj_spa:['proj','SPA'],proj_park:['proj','Parkside'],
+proj_one:['proj','The ONE'],proj_aqua:['proj','Green Line Aqua'],proj_dara:['proj','Dara Residence'],proj_vela:['proj','Vela Village'],proj_spa:['proj','SPA'],proj_park:['proj','Parkside'],
 s_kv:['srv','s1_h'],s_ko:['srv','s2_h'],s_pe:['srv','s3_h'],s_co:['srv','s4_h'],s_of:['srv','s5_h'],
 t_base:['tar','t1_h'],t_std:['tar','t2_h'],t_biz:['tar','t3_h'],t_nadzor:['nadzor']
 };
