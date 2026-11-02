@@ -10,12 +10,12 @@ window.SITE_EN={
   "nav_contacts": "Contacts",
   "cta_short": "Discuss a project",
   "hero_kicker": "Interior design studio · Astana · since 2023",
-  "hero_h1": "Bespoke interior design for apartments and houses in Astana",
-  "hero_lead": "We develop the design project and support it through to the end of renovation: procurement, designer supervision and trusted contractor teams. Site measurement is free.",
+  "hero_h1": "Interior design for apartments and houses in Astana",
+  "hero_lead": "Bespoke interiors for people who value individuality, flawless detail and the freedom to be themselves. Site measurement is free, and the design project can be paid in instalments.",
   "cta_private": "Discuss a private project",
   "hero_quiz": "Take the Interior Passport test",
   "hero_ig": "Studio projects on Instagram",
-  "intro_h": "Yellow Design is a bespoke studio that creates individual interiors and takes on their implementation: drawings, procurement, contractor teams and designer supervision. The studio portfolio exceeds 8,000 m².",
+  "intro_h": "Spaces that cannot be repeated. Yellow Design creates individual interiors and takes on the complexity of their implementation, from the layout to designer supervision.",
   "fact_1": "of designed interiors",
   "fact_2t": "Top 100",
   "fact_2": "designers and architects of Kazakhstan",
@@ -24,12 +24,12 @@ window.SITE_EN={
   "fact_4t": "7 of 8",
   "fact_4": "studio projects are TANU Design Award 2026 finalists",
   "proj_h": "Studio projects",
-  "proj_lead": "Apartments in premium residential complexes, country houses of 350 to 700 m², SPA and offices in Astana, Almaty, Burabay, Karaganda and Shymkent. Each project is shown with its colour palette.",
+  "proj_lead": "Apartments in premium buildings, country houses of 350 to 700 m², SPA and offices. The studio works in Astana, Almaty, Burabay, Karaganda and Shymkent.",
   "p1_type": "Apartment · neoclassical",
-  "p1_txt": "Marble and brass finishes, mouldings on the walls. Tinted glass partitions divide the living and dining rooms, and the bedroom has a panoramic semicircular window.",
+  "p1_txt": "A marble wall with a fireplace in the living room, tinted glass partitions between the living and dining rooms, a hand-painted wall in the bedroom.",
   "proj_like": "Discuss a similar project",
   "p2_type": "Country house",
-  "p2_txt": "A contemporary living room with Kazakh ornament: carved panels, dark wood and light stone. The children's rooms, study and dressing rooms follow the same style.",
+  "p2_txt": "A contemporary living room with Kazakh ornament: carved panels, a low dastarkhan table, dark wood and light stone. The children's room, study and dressing room follow the same style.",
   "p3_type": "Commercial · over 400 m²",
   "p3_txt": "Reception, lounge, massage rooms, hammam and sauna. Stone-effect textured plaster, concealed lighting in niches and along the ceiling perimeter.",
   "proj_like_biz": "Discuss a commercial project",
@@ -56,7 +56,7 @@ window.SITE_EN={
   "s4_h": "Commercial",
   "s4_p": "SPA complexes and coffee shops: a recognisable interior and materials designed for heavy guest traffic.",
   "s5_h": "Offices and studies",
-  "s5_p": "Offices in business centres and executive studies.",
+  "s5_p": "Offices in business centres and executive studies: zoning, meeting rooms and reception areas.",
   "srv_cta": "Get a price",
   "proc_h": "Budget, timeline and responsibilities are agreed before work begins",
   "proc_lead": "Developing the design project takes from 2 weeks to 1.5 months, depending on the area. After that, the studio supports the renovation until completion.",
@@ -103,7 +103,7 @@ window.SITE_EN={
   ],
   "t1_g": "Gift: contacts of shops and suppliers",
   "t_cta": "Discuss this plan",
-  "t_pop": "Turnkey project",
+  "t_pop": "Full support",
   "t2_h": "Standard",
   "t2_s": "Full set of drawings, visualisations and procurement trips",
   "t2_l": [
@@ -206,8 +206,8 @@ window.SITE_EN={
   "c_aqua2": "Hallway",
   "site_cap": "Vela Village. Dressing room lighting and fronts are detailed in the drawings before work begins.",
   "award_cap": "The studio submitted eight projects to TANU Design Award 2026, and seven of them reached the final.",
-  "f_5": "Portfolio includes country houses of 350-700 m², apartments in premium buildings and an SPA complex of over 400 m²",
-  "f_6": "We work only with trusted contractor teams and suppliers",
+  "f_5": "Over 8,000 m² of designed interiors: apartments, country houses, SPA and offices",
+  "f_6": "Three trusted contractor teams and long-standing suppliers",
   "award_h": "Seven studio projects in the final of an international competition",
   "hero_tabs_aria": "Projects in the palette",
   "hs1": "The ONE",
@@ -237,7 +237,7 @@ window.SITE_EN={
     "Silence, coffee and a book while everyone sleeps",
     "A big breakfast with the whole family",
     "A workout, then straight to business",
-    "A long shower, self-care, no rush"
+    "A slow morning and time for myself"
    ]
   ],
   [
@@ -264,7 +264,7 @@ window.SITE_EN={
     "Often and many, doors always open",
     "Rarely, only the closest people",
     "Dinners with a thoughtfully laid table",
-    "Business talks late into the night"
+    "Business meetings and long conversations"
    ]
   ],
   [
@@ -281,7 +281,7 @@ window.SITE_EN={
    [
     "Empty: just a laptop",
     "Books and notes, but I know where everything is",
-    "Flowers, a candle and pretty little things",
+    "Flowers, a candle and beautiful accessories",
     "I work wherever is convenient: at a desk, on the sofa, in the kitchen"
    ]
   ],
