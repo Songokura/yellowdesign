@@ -32,7 +32,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,500;1,400&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-one.webp" media="(min-width: 761px)">
 <link rel="preload" as="image" href="assets/img/hero-one-m.webp" media="(max-width: 760px)">
-<link rel="stylesheet" href="styles.css?v=20261102-20">
+<link rel="stylesheet" href="styles.css?v=20261103-1">
 <script src="https://lead-bot.sultan-askarov-kz.workers.dev/t.js" data-site="yellowdesign" defer></script>
 </head>
 <body>
@@ -505,20 +505,30 @@
   <div class="wrap">
     <div class="head">
       <h2 id="c-h" data-i="c_h">Обсудить частный проект</h2>
-      <p class="lead" data-i="c_lead">Укажите тип объекта и площадь, и мы ответим в WhatsApp. Заявки принимаются и в нерабочее время.</p>
+      <p class="lead" data-i="c_lead">Расскажите о вашем объекте - мы предложим подходящий состав услуг и рассчитаем стоимость.</p>
     </div>
     <div class="c-grid">
       <form class="c-form" id="lead-form" novalidate>
         <input class="hp" type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="fld"><label for="f-name" data-i="fm_name">Имя</label><input id="f-name" name="name" autocomplete="name"></div>
-        <div class="fld"><label for="f-phone" data-i="fm_phone">Телефон</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 7__ ___ __ __" required></div>
-        <div class="fld"><label for="f-obj" data-i="fm_obj">Объект</label>
+        <div class="fld"><label for="f-obj" data-i="fm_obj">Тип объекта</label>
           <select id="f-obj" name="object">
             <option data-i="o1">Квартира</option><option data-i="o2">Загородный дом</option><option data-i="o3">Пентхаус</option><option data-i="o4">Коммерция</option><option data-i="o5">Офис</option>
           </select></div>
         <div class="fld"><label for="f-area" data-i="fm_area">Площадь, м²</label><input id="f-area" name="area" inputmode="numeric" placeholder="120"></div>
+        <fieldset class="svc">
+          <legend data-i="fm_svc">Нужные услуги</legend>
+          <div class="svc-list">
+            <label><input type="checkbox" name="svc" value="1"><span data-i="sv1">Дизайн-проект</span></label>
+            <label><input type="checkbox" name="svc" value="2"><span data-i="sv2">Авторское сопровождение</span></label>
+            <label><input type="checkbox" name="svc" value="3"><span data-i="sv3">Комплектация</span></label>
+            <label><input type="checkbox" name="svc" value="4"><span data-i="sv4">3D-визуализация</span></label>
+            <label><input type="checkbox" name="svc" value="5"><span data-i="sv5">Консультация дизайнера</span></label>
+          </div>
+        </fieldset>
+        <div class="fld fld-wide"><label for="f-phone" data-i="fm_phone">Телефон для ответа</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 7__ ___ __ __" required></div>
         <p class="res-err" hidden data-i="res_err">Укажите номер телефона для связи</p>
-        <button class="btn btn-y" type="submit"><svg width="18" height="18"><use href="#ic-wa"/></svg><span data-i="fm_send">Отправить в WhatsApp</span></button>
+        <button class="btn btn-y" type="submit"><svg width="18" height="18"><use href="#ic-wa"/></svg><span data-i="fm_send">Рассчитать стоимость моего проекта</span></button>
+        <p class="c-note" data-i="fm_note">Свяжемся с вами, уточним детали и подготовим коммерческое предложение.</p>
         <p class="fm-ok" hidden data-i="fm_ok">Спасибо! Сейчас откроется WhatsApp, отправьте подготовленное сообщение.</p>
         <ul class="perks">
           <li data-i="perk_1">Бесплатный замер и экспресс-разбор планировки</li>
@@ -561,6 +571,6 @@
   <a class="mbar-ig" href="https://www.instagram.com/yellow_design_kz/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22"><use href="#ic-ig"/></svg></a>
 </nav>
 
-<script src="script.js?v=20261102-20" defer></script>
+<script src="script.js?v=20261103-1" defer></script>
 </body>
 </html>

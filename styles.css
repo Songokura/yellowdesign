@@ -408,6 +408,17 @@ figure{margin:0}
 .perks li{position:relative;padding-left:26px}
 .perks li::before{content:"";position:absolute;left:0;top:.72em;width:14px;height:2px;background:var(--yellow)}
 .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld-wide,.svc,.c-note{grid-column:1/-1}
+.svc{margin:0;padding:0;border:0;min-width:0}
+.svc legend{padding:0;margin-bottom:12px;font-size:13px;color:var(--on-dark-m)}
+.svc-list{display:flex;flex-wrap:wrap;gap:10px}
+.svc label{position:relative;cursor:pointer}
+.svc input{position:absolute;opacity:0;width:1px;height:1px}
+.svc span{display:inline-block;padding:10px 16px;border:1px solid rgba(243,240,234,.3);border-radius:999px;font-size:15px;line-height:1.2;color:var(--on-dark);transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.svc input:checked+span{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.svc input:focus-visible+span{outline:2px solid var(--yellow);outline-offset:3px}
+@media (hover:hover) and (pointer:fine){.svc span:hover{border-color:var(--on-dark)}}
+.c-note{margin-top:-14px;font-size:14px;color:var(--on-dark-m)}
 .fld label{color:var(--on-dark-m)}
 .fld input,.fld select{height:52px;padding:0;border:0;border-bottom:1px solid rgba(243,240,234,.3);background:transparent;color:var(--on-dark);font-size:17px;border-radius:0;-webkit-appearance:none;appearance:none}
 .fld select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F3F0EA' stroke-width='1.4'/%3E%3C/svg%3E") right 2px center no-repeat}

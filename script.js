@@ -9,7 +9,7 @@ var W={
  "srv": "Здравствуйте! Хочу узнать стоимость дизайн-проекта: {x}.",
  "tar": "Здравствуйте! Интересует тариф «{x}».",
  "nadzor": "Здравствуйте! Интересует авторское сопровождение, хочу узнать стоимость.",
- "form": "Здравствуйте! Заявка с сайта.\nИмя: {n}\nТелефон: {p}\nОбъект: {o}\nПлощадь: {a} м²",
+ "form": "Здравствуйте! Хочу рассчитать стоимость проекта.\nОбъект: {o}\nПлощадь: {a} м²\nУслуги: {s}\nТелефон: {p}",
  "quiz": "Здравствуйте! Мой паспорт интерьера: «{x}».\nПалитра: {c}\nТелефон: {p}\nХочу обсудить проект."
 };
 var WA_MAP={
@@ -191,7 +191,8 @@ function initForm(){
     if(ph.value.replace(/\D/g,'').length<10){err.hidden=false;ph.focus();return}
     err.hidden=true;
     var sel=f.querySelector('select');
-    var txt=wTpl('form').replace('{n}',f.querySelector('[name=name]').value.trim()||'-').replace('{p}',ph.value.trim())
+    var svc=[].map.call(f.querySelectorAll('[name=svc]:checked'),function(c){return c.nextElementSibling.textContent.trim()}).join(', ')||'-';
+    var txt=wTpl('form').replace('{p}',ph.value.trim()).replace('{s}',svc)
       .replace('{o}',sel.options[sel.selectedIndex].text).replace('{a}',f.querySelector('[name=area]').value.trim()||'-');
     window.open(waUrl(txt),'_blank','noopener');
     f.querySelector('.fm-ok').hidden=false;
