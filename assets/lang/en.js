@@ -139,7 +139,7 @@ window.SITE_EN={
   "f_3": "Multiple finalist of international design and architecture awards",
   "f_cta": "Message Madina",
   "f_ig": "Studio work on Instagram",
-  "c_h": "Discuss a private project",
+  "c_h": "Project cost estimate",
   "office_cap": "The ONE",
   "c_lead": "Tell us about your property and we will suggest the right set of services and calculate the cost.",
   "fm_phone": "Phone for our reply",
