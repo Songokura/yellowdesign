@@ -371,6 +371,7 @@ function initProjTabs(){
     var ok=tabs.some(function(t){return t.getAttribute('aria-controls')===id}); if(!ok) id=tabs[0].getAttribute('aria-controls');
     tabs.forEach(function(t){var on=t.getAttribute('aria-controls')===id;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1});
     panels.forEach(function(p){p.hidden=p.id!==id});
+    if(window.YD_GAL) window.YD_GAL();
     if(window.YD_PANEL) window.YD_PANEL(doc.getElementById(id));
     if(scroll){
       var y=box.getBoundingClientRect().top+window.pageYOffset-parseInt(getComputedStyle(root).scrollPaddingTop||0,10)-16;
@@ -503,7 +504,7 @@ function initMotion(){
   /* страница проектов: кадры открытого проекта ложатся по очереди */
   function panel(p){
     if(!p) return;
-    var g=$$('.gal-it',p).slice(0,12);
+    var g=(p.querySelector('.gal')._items||$$('.gal-it',p)).slice(0,12);
     G.fromTo(g,{y:36,autoAlpha:0},{y:0,autoAlpha:1,duration:.9,ease:E,stagger:.05,overwrite:true,clearProps:'transform'});
     requestAnimationFrame(function(){ST.refresh()});
   }
@@ -512,13 +513,56 @@ function initMotion(){
   window.addEventListener('load',function(){ST.refresh()});
 }
 
+
+/* Галереи проектов: ряды на всю ширину. Кадры целиком, в ряду одна высота,
+   число рядов - от желаемой высоты ряда, кадры делятся по рядам поровну (линейное разбиение) */
+function initMasonry(){
+  var gals=[].slice.call(doc.querySelectorAll('.gal')); if(!gals.length) return;
+  gals.forEach(function(g){g._items=[].slice.call(g.querySelectorAll('.gal-it'));g.classList.add('jr')});
+  function asp(it){return (+it.getAttribute('data-w')||1)/(+it.getAttribute('data-h')||1)}
+  function part(a,k){
+    var n=a.length,i,j,x,pre=[0];
+    for(i=0;i<n;i++) pre.push(pre[i]+a[i]);
+    if(k>=n) return a.map(function(_,i){return [i,i+1]});
+    var M=[],Dv=[];
+    for(i=0;i<=n;i++){M.push([]);Dv.push([]);for(j=0;j<=k;j++){M[i].push(Infinity);Dv[i].push(0)}}
+    M[0][0]=0;
+    for(i=1;i<=n;i++) for(j=1;j<=Math.min(i,k);j++) for(x=j-1;x<i;x++){
+      var c=Math.max(M[x][j-1],pre[i]-pre[x]); if(c<M[i][j]){M[i][j]=c;Dv[i][j]=x}
+    }
+    var out=[],e=n; for(j=k;j>0;j--){var st=Dv[e][j];out.unshift([st,e]);e=st}
+    return out;
+  }
+  function layout(){
+    var vw=window.innerWidth, H=vw>=1500?440:vw>900?380:vw>560?260:210, G=vw>760?14:8;
+    gals.forEach(function(g){
+      var W=g.clientWidth||g.parentNode.clientWidth; if(!W) {g._w=0;return}
+      if(g._w===W) return; g._w=W;
+      var it=g._items, a=it.map(asp), S=a.reduce(function(p,c){return p+c},0);
+      var k=Math.max(1,Math.round(S*H/W));
+      g.innerHTML='';
+      part(a,k).forEach(function(r){
+        var row=doc.createElement('div'); row.className='gal-row';
+        var sa=0,i; for(i=r[0];i<r[1];i++) sa+=a[i];
+        var n=r[1]-r[0];
+        for(i=r[0];i<r[1];i++){it[i].style.width='calc((100% - '+(G*(n-1))+'px) * '+(a[i]/sa).toFixed(5)+')';row.appendChild(it[i])}
+        g.appendChild(row);
+      });
+    });
+    if(window.ScrollTrigger) window.ScrollTrigger.refresh();
+  }
+  layout();
+  window.YD_GAL=layout;
+  var t=null; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(layout,150)});
+}
+
 /* Старт */
 doc.querySelectorAll('[data-i]').forEach(function(el){RU[el.getAttribute('data-i')]=el.textContent});
 doc.querySelectorAll('[data-i-list]').forEach(function(ul){RUL[ul.getAttribute('data-i-list')]=[].map.call(ul.children,function(li){return li.textContent})});
 doc.querySelectorAll('[data-i-aria]').forEach(function(el){var k=el.getAttribute('data-i-aria');RUA[k+'|'+(el.id||'')]=el.getAttribute('aria-label')});
 doc.querySelectorAll('[data-i-ph]').forEach(function(el){RUPH[el.getAttribute('data-i-ph')]=el.getAttribute('placeholder')});
 
-initMenu(); initModal(); initLeadForm(doc.getElementById('c-form')); initQuiz(); initHero(); initFeat(); initProjTabs(); initLightbox(); initReveal();
+initMenu(); initModal(); initLeadForm(doc.getElementById('c-form')); initQuiz(); initHero(); initFeat(); initProjTabs(); initLightbox(); initMasonry(); initReveal();
 
 var startLang='ru';
 try{

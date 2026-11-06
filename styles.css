@@ -428,6 +428,9 @@ figure{margin:0}
 .pj-txt{grid-column:2;grid-row:1/4;font-size:19px;line-height:1.6;color:var(--muted);font-weight:300}
 .pj-cta{grid-column:1;justify-self:start;margin-top:18px}
 .gal{columns:3;column-gap:14px}
+.gal.jr{columns:auto;display:flex;flex-direction:column;gap:14px}
+.gal-row{display:flex;gap:14px}
+.gal.jr .gal-it{flex:none;margin:0}
 .gal-it{display:block;margin-bottom:14px;break-inside:avoid;overflow:hidden;background:var(--stone);cursor:zoom-in}
 .gal-it img{width:100%;height:auto;transition:transform .9s var(--ease-out)}
 @media (hover:hover) and (pointer:fine){.gal-it:hover img{transform:scale(1.03)}}
@@ -633,6 +636,7 @@ figure{margin:0}
   .pj-txt{font-size:17px}
   .gal{column-gap:8px}
   .gal-it{margin-bottom:8px}
+  .gal.jr,.gal-row{gap:8px}
   .pg-cta{padding:80px 0}
   .sv-list{padding-bottom:88px}
   .sv-txt p{font-size:18px}
