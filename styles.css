@@ -377,7 +377,7 @@ figure{margin:0}
 .c-muted{color:var(--on-dark-m)}
 .c-acts{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 0}
 .c-office{margin:36px 0 0}
-.c-office img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.c-office img{width:100%;height:auto}
 .c-office figcaption{margin-top:14px;font-size:14px;line-height:1.5;color:var(--on-dark-m)}
 
 /* Окно заявки */
