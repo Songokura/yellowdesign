@@ -48,8 +48,9 @@ function loadLang(l,done){
 function setLang(l){l=(l==='kk'||l==='en')?l:'ru'; loadLang(l,function(){applyLang((l==='ru'||I18N[l])?l:'ru')})}
 function waUrl(txt){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(txt)}
 
-var hooks=[];
+var hooks=[], preHooks=[];
 function applyLang(l){
+  preHooks.forEach(function(f){f()});
   lang=l;
   root.lang=lang;
   doc.querySelectorAll('[data-i]').forEach(function(el){var v=tv(el.getAttribute('data-i')); if(v!=null) el.textContent=v;});
@@ -262,7 +263,7 @@ function initQuiz(){
     var rk=ranking(); prof=rk[0]; second=rk[1]||null; pal=palette(); fillRes();
     box.dataset.state='res'; grid.classList.add('res'); res.hidden=false; res.classList.remove('show');
     var top=grid.getBoundingClientRect().top+window.pageYOffset-parseInt(getComputedStyle(root).scrollPaddingTop||0,10)-24;
-    window.scrollTo({top:top,behavior:'auto'});
+    jumpTo(top);
     requestAnimationFrame(function(){requestAnimationFrame(function(){res.classList.add('show')})});
   }
   box.querySelector('.qz-again').addEventListener('click',function(){
@@ -302,6 +303,8 @@ function initMenu(){
 }
 
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var LENIS=null;
+function jumpTo(y){if(LENIS) LENIS.scrollTo(y,{immediate:true,force:true}); else window.scrollTo({top:y,behavior:'auto'})}
 
 /* Первый экран: кадры проектов сменяют друг друга */
 var HERO=null;
@@ -368,10 +371,11 @@ function initProjTabs(){
     var ok=tabs.some(function(t){return t.getAttribute('aria-controls')===id}); if(!ok) id=tabs[0].getAttribute('aria-controls');
     tabs.forEach(function(t){var on=t.getAttribute('aria-controls')===id;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1});
     panels.forEach(function(p){p.hidden=p.id!==id});
+    if(window.YD_PANEL) window.YD_PANEL(doc.getElementById(id));
     if(scroll){
       var y=box.getBoundingClientRect().top+window.pageYOffset-parseInt(getComputedStyle(root).scrollPaddingTop||0,10)-16;
       if(scroll==='panel'){var sec=doc.querySelector('.pj-sec');y=sec.getBoundingClientRect().top+window.pageYOffset-parseInt(getComputedStyle(root).scrollPaddingTop||0,10)}
-      window.scrollTo({top:y,behavior:'auto'});
+      jumpTo(y);
     }
     return id;
   }
@@ -423,6 +427,91 @@ function initReveal(){
   els.forEach(function(e){io.observe(e)});
 }
 
+
+/* ===== Плавность: Lenis + GSAP. Одна кривая cubic-bezier(.2,.7,.2,1), длительности .2 / .4 / 1 ===== */
+function initMotion(){
+  var G=window.gsap, ST=window.ScrollTrigger;
+  if(!G||!ST||reduce) return;
+  G.registerPlugin(ST); if(window.SplitText) G.registerPlugin(window.SplitText);
+  ST.config({ignoreMobileResize:true});
+  root.classList.add('gs');
+  function bez(x1,y1,x2,y2){return function(t){if(t<=0)return 0;if(t>=1)return 1;var a=0,b=1,u=t;for(var i=0;i<18;i++){u=(a+b)/2;var x=3*u*(1-u)*(1-u)*x1+3*u*u*(1-u)*x2+u*u*u;if(x<t)a=u;else b=u}return 3*u*(1-u)*(1-u)*y1+3*u*u*(1-u)*y2+u*u*u}}
+  var E=bez(.2,.7,.2,1), T3=1, STG=.08;
+  var MOB=window.matchMedia('(max-width:760px)').matches;
+  var $$=function(q,r){return [].slice.call((r||doc).querySelectorAll(q))};
+
+  /* плавная прокрутка */
+  if(window.Lenis){
+    LENIS=new window.Lenis({lerp:.1,smoothWheel:true});
+    LENIS.on('scroll',ST.update);
+    G.ticker.add(function(t){LENIS.raf(t*1000)});
+    G.ticker.lagSmoothing(0);
+    /* меню, окно заявки и просмотр фото - прокрутка страницы стоит */
+    new MutationObserver(function(){var stop=body.classList.contains('menu-open')||body.classList.contains('modal-open');if(stop)LENIS.stop();else LENIS.start()}).observe(body,{attributes:true,attributeFilter:['class']});
+    /* якоря внутри страницы - с отступом шапки */
+    doc.addEventListener('click',function(e){
+      var a=e.target.closest('a[href^="#"]'); if(!a||e.defaultPrevented) return;
+      var id=a.getAttribute('href'); if(id.length<2) return;
+      var t=doc.getElementById(id.slice(1)); if(!t||t.closest('[hidden]')||t.getAttribute('role')==='tabpanel') return;
+      e.preventDefault();
+      var hdr=doc.querySelector('.hdr'), off=hdr?hdr.offsetHeight:0;
+      LENIS.scrollTo(t,{offset:-off,duration:1.2});
+      try{history.replaceState(null,'',id)}catch(err){}
+    });
+  }
+
+  /* заголовки секций: слова поднимаются из-под маски */
+  var splits=[];
+  function doSplit(){
+    $$('.head h2,.feat-head h2,.qz-side h2,.f-txt h2,.proc-txt h2,.award-txt h3,.rev-head h2,.pg-head h1,.sv-txt h2,.work h2,.pg-cta h2,.nadzor-sec h2,.statement').forEach(function(h){
+      var sp=new window.SplitText(h,{type:'words,lines',mask:'lines'});
+      splits.push(sp);
+      G.from(sp.words,{yPercent:110,duration:T3,ease:E,stagger:.03,scrollTrigger:{trigger:h,start:'top 90%',once:true}});
+    });  }
+  if(window.SplitText){ if(doc.fonts&&doc.fonts.ready) doc.fonts.ready.then(function(){doSplit();ST.refresh()}); else doSplit(); }
+  /* смена языка заменяет текст - разбивку снимаем */
+  preHooks.push(function(){splits.forEach(function(sp){sp.revert()});splits=[]});
+
+  /* блоки текста и карточки: мягкий подъём пачками */
+  var items=$$('.head .lead,.head-row .link,.feat-head .lead,.feat-nav,.fs-cap,.feat-foot,.philo .kicker,.philo-list li,.srv-cards li,.proc-txt .lead,.steps li,.f-txt .kicker,.f-lead,.f-list li,.f-acts,.award-txt p,.qz-side .kicker,.qz-side .lead,.pass,.qz,.tier,.nadzor-row,.prices-note,.rev-rate,.rev,.c-grid .lead-form,.c-info>*,.pg-head .lead,.ptabs,.pj-head>*,.sv-txt p,.sv-acts,.work .lead,.work .btn,.work-list li,.nadzor p,.nadzor .btn,.pg-cta-acts,.pol h2,.pol p');
+  items=items.filter(function(el){return !el.closest('.hero')});
+  G.set(items,{y:28,autoAlpha:0});
+  ST.batch(items,{start:'top 92%',once:true,onEnter:function(b){G.to(b,{y:0,autoAlpha:1,duration:.9,ease:E,stagger:STG,overwrite:true})}});
+
+  /* кадры: раскрытие шторкой снизу и лёгкий наезд; на телефоне только проявление */
+  $$('.proc-img,.f-img,.award-fig,.rev-fig,.sv-img,.c-office,.sc-img').forEach(function(fig){
+    fig.classList.remove('rv');
+    var img=fig.querySelector('img'); if(!img) return;
+    if(MOB){G.from(fig,{autoAlpha:0,duration:.9,ease:E,scrollTrigger:{trigger:fig,start:'top 92%',once:true}});return}
+    var tl=G.timeline({scrollTrigger:{trigger:fig,start:'top 88%',once:true}});
+    tl.fromTo(fig,{clipPath:'inset(18% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.2,ease:E})
+      .fromTo(img,{scale:1.12},{scale:1,duration:1.6,ease:E},0);
+  });
+  /* параллакс внутри крупных кадров (только компьютер) */
+  if(!MOB) $$('.proc-img img,.f-img img,.sv-img img,.award-fig img').forEach(function(img){
+    var w=doc.createElement('span'); w.className='px'; img.parentNode.insertBefore(w,img); w.appendChild(img);
+    G.fromTo(w,{yPercent:-5},{yPercent:5,ease:'none',scrollTrigger:{trigger:w.parentNode,start:'top bottom',end:'bottom top',scrub:.6}});
+  });
+  /* шаги процесса: номер загорается по очереди */
+  $$('.steps li').forEach(function(li){
+    var n=li.querySelector('.n'); if(!n) return;
+    G.fromTo(n,{opacity:.25},{opacity:1,duration:.4,ease:E,scrollTrigger:{trigger:li,start:'top 75%',once:true}});
+  });
+  /* лента «Наши проекты» проявляется при входе блока */
+  var feat=doc.querySelector('.feat-track');
+  if(feat) G.from(feat,{autoAlpha:0,y:40,duration:1.2,ease:E,scrollTrigger:{trigger:feat,start:'top 88%',once:true}});
+  /* страница проектов: кадры открытого проекта ложатся по очереди */
+  function panel(p){
+    if(!p) return;
+    var g=$$('.gal-it',p).slice(0,12);
+    G.fromTo(g,{y:36,autoAlpha:0},{y:0,autoAlpha:1,duration:.9,ease:E,stagger:.05,overwrite:true,clearProps:'transform'});
+    requestAnimationFrame(function(){ST.refresh()});
+  }
+  window.YD_PANEL=panel;
+  var open=doc.querySelector('.pj:not([hidden])'); if(open) panel(open);
+  window.addEventListener('load',function(){ST.refresh()});
+}
+
 /* Старт */
 doc.querySelectorAll('[data-i]').forEach(function(el){RU[el.getAttribute('data-i')]=el.textContent});
 doc.querySelectorAll('[data-i-list]').forEach(function(ul){RUL[ul.getAttribute('data-i-list')]=[].map.call(ul.children,function(li){return li.textContent})});
@@ -438,6 +527,7 @@ try{
   else {var s=localStorage.getItem('yd-lang'); if(s) startLang=s;}
 }catch(e){}
 setLang(startLang);
+initMotion();
 doc.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
 
 /* Липкая панель на телефоне: после части первого экрана, прячется на блоке контактов */
