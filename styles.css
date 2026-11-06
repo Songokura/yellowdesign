@@ -397,7 +397,8 @@ figure{margin:0}
 .pg-head{padding:96px 0 64px}
 .pg-head h1{font:400 var(--fs-h1)/1.04 var(--serif);letter-spacing:-.018em;color:var(--ink)}
 .pp-head{padding-bottom:56px}
-.ptabs{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,1fr);gap:28px;margin-top:48px}
+.ptabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 14px;margin-top:48px}
+.ptg-home{grid-column:span 5}
 .ptg-h{margin-bottom:14px;font:400 12px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .ptg-home .ptg-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
 .ptg-biz .ptg-list{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
@@ -572,7 +573,8 @@ figure{margin:0}
   .hero-ctrl .arrow{width:42px;height:42px}
   .hero-txt{padding:20px var(--gut) 24px}
   .hero-k{font-size:13px;margin-bottom:10px}
-  .hero h1{font-size:clamp(32px,9.2vw,42px);line-height:1.02;letter-spacing:-.015em}
+  .hero h1{font-size:clamp(28px,7.9vw,36px);line-height:1.04;letter-spacing:-.015em}
+  html[lang="kk"] .hero h1{font-size:clamp(26px,7vw,32px)}
   .hero-lead{font-size:15px;margin:12px 0 18px;line-height:1.45}
   .hero-acts{gap:10px}
   .hero-acts .btn{width:100%;min-height:52px}
@@ -648,7 +650,8 @@ figure{margin:0}
 @media (max-height:760px) and (max-width:760px){
   .hero-media{height:40svh}
   .hero-k{margin-bottom:8px}
-  .hero h1{font-size:clamp(29px,8.4vw,36px)}
+  .hero h1{font-size:clamp(25px,7vw,31px)}
+  html[lang="kk"] .hero h1{font-size:clamp(24px,6.4vw,28px)}
   .hero-lead{margin:10px 0 14px;font-size:14px}
   .hero-acts{gap:8px}
   .hero-acts .btn{min-height:46px}
@@ -667,4 +670,17 @@ figure{margin:0}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
   .rv{opacity:1}
   .hs img{transform:none!important}
+}
+/* Внутренние страницы на широких мониторах: контент на всю ширину, без белых полей по бокам */
+@media (min-width:1500px){
+  .hdr-in{max-width:none;padding:0 clamp(40px,4.4vw,96px)}
+  body[data-page="proekty"] .wrap,body[data-page="uslugi"] .wrap{max-width:none;padding:0 clamp(40px,4.4vw,96px)}
+  body[data-page="proekty"] .gal{columns:4}
+  body[data-page="proekty"] .pj-txt{font-size:20px}
+  body[data-page="uslugi"] .sv{gap:96px}
+  body[data-page="uslugi"] .sv-txt p{font-size:22px}
+  body[data-page="uslugi"] .work-list li{font-size:20px}
+}
+@media (min-width:2200px){
+  body[data-page="proekty"] .gal{columns:5}
 }
