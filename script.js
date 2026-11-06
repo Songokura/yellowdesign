@@ -1,44 +1,46 @@
 (function(){
 'use strict';
 var WA='77020387454';
-var doc=document, root=doc.documentElement;
+var doc=document, root=doc.documentElement, body=doc.body;
+var PAGE=body.getAttribute('data-page')||'home';
 /* Тексты сообщений WhatsApp (русский; казахский и английский - в assets/lang) */
 var W={
- "gen": "Здравствуйте! Хочу обсудить частный проект интерьера.",
- "proj": "Здравствуйте! Хочу обсудить проект, похожий на «{x}».",
- "srv": "Здравствуйте! Хочу узнать стоимость дизайн-проекта: {x}.",
- "tar": "Здравствуйте! Интересует тариф «{x}».",
- "nadzor": "Здравствуйте! Интересует авторское сопровождение, хочу узнать стоимость.",
- "form": "Здравствуйте! Хочу рассчитать стоимость проекта.\nОбъект: {o}\nПлощадь: {a} м²\nУслуги: {s}\nТелефон: {p}",
+ "gen": "Здравствуйте! Хочу обсудить проект интерьера.",
+ "srv": "Здравствуйте! Интересует дизайн-проект: {x}.",
+ "form": "Здравствуйте! Заявка с сайта.\nТема: {r}\nИмя: {n}\nТелефон: {p}\nТип помещения: {o}\nПлощадь: {a} м²\n{q}",
  "quiz": "Здравствуйте! Мой паспорт интерьера: «{x}».\nПалитра: {c}\nТелефон: {p}\nХочу обсудить проект."
 };
-var WA_MAP={
-hdr:['gen'],band:['gen'],menu:['gen'],hero:['gen'],mbar:['gen'],founder:['gen'],
-proj_one:['proj','The ONE'],proj_aqua:['proj','Green Line Aqua'],proj_dara:['proj','Dara Residence'],proj_vela:['proj','Vela Village'],proj_spa:['proj','SPA'],proj_park:['proj','Parkside'],
-s_kv:['srv','s1_h'],s_ko:['srv','s2_h'],s_pe:['srv','s3_h'],s_co:['srv','s4_h'],s_of:['srv','s5_h'],
-t_base:['tar','t1_h'],t_std:['tar','t2_h'],t_biz:['tar','t3_h'],t_nadzor:['nadzor']
-};
-/* ===== Квиз «Паспорт интерьера» (русский) ===== */
-var P={"t":{"img":"q-t","proj":"ЖК Dara Residence","sw":["#E3DACD","#C8B9A3","#8F8374"],"pal":[["#F3EFE8","Молоко"],["#E3DACD","Лён"],["#C8B9A3","Песок"],["#8F8374","Тауп"],["#3A3530","Графит"]],"name":"Тихий свет","desc":"Светлый дом, в котором отдыхают глаза: мягкие оттенки, тактильные ткани и свет без резких теней.","recs":["Три сценария освещения - утро, работа, вечер - с регулировкой яркости.","Закрытые системы хранения от пола до потолка, на виду только избранные вещи.","Фактурные материалы - лён, шерсть, микроцемент - вместо декоративных предметов."]},"o":{"img":"q-o","proj":"ЖК The ONE","sw":["#D2B48C","#9A6B47","#6E7552"],"pal":[["#EFE6D8","Сливки"],["#D2B48C","Мёд"],["#9A6B47","Орех"],["#6E7552","Олива"],["#2F2620","Мокко"]],"name":"Тёплый очаг","desc":"Дом для большой семьи: тёплое дерево, просторная кухня-гостиная и общий стол для всех.","recs":["Кухня с островом как центр дома, обеденный стол на 8-10 мест.","Дерево в отделке пола и в мебели, износостойкие ткани для семьи с детьми.","Отдельный кабинет или библиотека для взрослых."]},"g":{"img":"q-g","proj":"Vela Village","sw":["#D8D7D2","#B08D57","#8B8A86"],"pal":[["#F5F4F1","Белый"],["#D8D7D2","Бетон"],["#8B8A86","Сталь"],["#262625","Уголь"],["#FFCD2A","Жёлтый"]],"name":"Чистая линия","desc":"Графичный контрастный интерьер: точная геометрия, минимум предметов и одна выразительная деталь.","recs":["Фасады без ручек, скрытые двери в цвет стен.","Один арт-объект на главной стене вместо множества мелкого декора.","Трековые светильники, которые легко перенастроить под новую расстановку мебели."]},"r":{"img":"q-r","proj":"ЖК Dara Residence","sw":["#D9CCB9","#B48F5E","#8C6F55"],"pal":[["#F2EDE5","Слоновая кость"],["#D9CCB9","Травертин"],["#B48F5E","Латунь"],["#5F4C3D","Каштан"],["#1E1C1A","Чёрный"]],"name":"Резиденция","desc":"Неоклассика: мрамор, латунь, молдинги и симметрия. Мебель и материалы, которые служат десятилетиями.","recs":["Симметричные композиции и молдинги, рассчитанные на высоту потолков.","Натуральный мрамор как акцент в одной-двух зонах.","Витрина или ниша с подсветкой для коллекции."]},"n":{"img":"q-n","proj":"SPA","sw":["#D5CCBC","#A4A58B","#7E6C58"],"pal":[["#EEEAE2","Туман"],["#D5CCBC","Камень"],["#A4A58B","Шалфей"],["#7E6C58","Глина"],["#3C3932","Базальт"]],"name":"Ретрит","desc":"Интерьер в духе SPA: камень, дерево, живые растения и мягкий тёплый свет.","recs":["Ванная как зона отдыха: тёплый пол, ниши и свет по периметру.","Фактурная штукатурка и камень вместо обоев.","Места для живых растений, заложенные в планировку."]},"k":{"img":"q-k","proj":"ЖК The ONE","sw":["#A9875E","#7A5A40","#C9B79C"],"pal":[["#E6DED2","Пергамент"],["#A9875E","Коньяк"],["#5B3F2C","Палисандр"],["#2E2622","Эспрессо"],["#141210","Ночь"]],"name":"Вечерний клуб","desc":"Глубокие тона, тёмное дерево, кожа и тёплый вечерний свет. Интерьер для работы и приёма гостей.","recs":["Стеновые панели из шпона тёмных пород.","Тёплый свет 2700 K: бра и торшеры вместо верхнего освещения.","Библиотека или бар как композиционный центр гостиной."]}};
+/* ===== Паспорт интерьера (русский) ===== */
+var P={"t":{"img":"q-t","proj":"ЖК Green Line Aqua","href":"aqua","pal":[["#F4F1EA","Молоко"],["#DCD3C4","Лён"],["#C2B39C","Песок"],["#8F8374","Тауп"],["#3A3530","Графит"]],"name":"Тихий свет","desc":"Светлый дом, в котором отдыхают глаза: мягкие оттенки, тактильные ткани и свет без резких теней.","recs":["Три сценария освещения - утро, работа, вечер - с регулировкой яркости.","Закрытые системы хранения от пола до потолка, на виду только избранные вещи.","Фактурные материалы - лён, шерсть, микроцемент - вместо декоративных предметов."]},"o":{"img":"q-o","proj":"Vela Village","href":"vela","pal":[["#F1E2C8","Сливки"],["#D9A85B","Мёд"],["#8A5A3A","Орех"],["#6E7552","Олива"],["#3B2A22","Мокко"]],"name":"Тёплый очаг","desc":"Дом для большой семьи: тёплое дерево, просторная кухня-гостиная и общий стол для всех.","recs":["Кухня с островом как центр дома, обеденный стол на 8-10 мест.","Дерево в отделке пола и в мебели, износостойкие ткани для семьи с детьми.","Отдельный кабинет или библиотека для взрослых."]},"g":{"img":"q-g","proj":"ЖК Parkside","href":"parkside","pal":[["#FFFFFF","Белый"],["#C9C9C6","Бетон"],["#7D8288","Сталь"],["#232425","Уголь"],["#FFCD2A","Жёлтый"]],"name":"Чистая линия","desc":"Графичный контрастный интерьер: точная геометрия, минимум предметов и одна выразительная деталь.","recs":["Фасады без ручек, скрытые двери в цвет стен.","Один арт-объект на главной стене вместо множества мелкого декора.","Трековые светильники, которые легко перенастроить под новую расстановку мебели."]},"r":{"img":"q-r","proj":"ЖК Dara Residence","href":"dara","pal":[["#EFE6D6","Слоновая кость"],["#D6C7AE","Травертин"],["#B48F4E","Латунь"],["#6B4532","Каштан"],["#151413","Чёрный"]],"name":"Резиденция","desc":"Неоклассика: мрамор, латунь, молдинги и симметрия. Мебель и материалы, которые служат десятилетиями.","recs":["Симметричные композиции и молдинги, рассчитанные на высоту потолков.","Натуральный мрамор как акцент в одной-двух зонах.","Витрина или ниша с подсветкой для коллекции."]},"n":{"img":"q-n","proj":"","href":"spa","pal":[["#E4E8E2","Туман"],["#BDB6A8","Камень"],["#9AA58A","Шалфей"],["#A97E5F","Глина"],["#3E403A","Базальт"]],"name":"Ретрит","desc":"Интерьер в духе SPA: камень, дерево, живые растения и мягкий тёплый свет.","recs":["Ванная как зона отдыха: тёплый пол, ниши и свет по периметру.","Фактурная штукатурка и камень вместо обоев.","Места для живых растений, заложенные в планировку."]},"k":{"img":"q-k","proj":"ЖК The ONE","href":"theone","pal":[["#E2D5BE","Пергамент"],["#9C5B2E","Коньяк"],["#5A2F25","Палисандр"],["#2E221C","Эспрессо"],["#12161D","Ночь"]],"name":"Вечерний клуб","desc":"Глубокие тона, тёмное дерево, кожа и тёплый вечерний свет. Интерьер для работы и приёма гостей.","recs":["Стеновые панели из шпона тёмных пород.","Тёплый свет 2700 K: бра и торшеры вместо верхнего освещения.","Библиотека или бар как композиционный центр гостиной."]}};
 /* Вопрос: [текст, ответы: [текст, профиль, второй профиль]] */
 var QS=[["Идеальное утро выходного дня - это...",[["Тишина, кофе и книга, пока все спят","t"],["Большой завтрак со всей семьёй","o"],["Тренировка, затем сразу дела","g"],["Неспешное утро и время для себя","n"]]],["Вы вернулись домой после трудного дня. Что вам нужно в первую очередь?",[["Приглушённый свет и тишина","t","n"],["Голоса близких и запах ужина","o"],["Порядок: ничего лишнего на виду","g"],["Кресло, бокал и любимая музыка","k"]]],["Какой отпуск вы выберете?",[["Дом в горах с камином","o","n"],["Европейская столица: музеи, рестораны, архитектура","r","g"],["Спа-отель у моря","n","t"],["Новый город и плотная программа","g","k"]]],["Гости в вашем доме - это...",[["Часто и много, двери открыты","o"],["Редко и только самые близкие","t"],["Ужины с продуманной сервировкой","r"],["Деловые встречи и долгие разговоры","k"]]],["Какая фактура приятнее на ощупь?",[["Лён и шерсть","t"],["Тёплое дерево","o"],["Гладкий камень и металл","g"],["Бархат и кожа","k","r"]]],["Как сейчас выглядит ваш рабочий стол?",[["Пустой: только ноутбук","g","t"],["Книги и заметки, но я знаю, где что","k"],["Цветы, свеча и красивые аксессуары","r"],["Работаю там, где удобно: за столом, на диване, на кухне","o","n"]]],["Какое время суток - ваше?",[["Раннее утро","t"],["Солнечный полдень","o"],["Золотой час перед закатом","n","r"],["Поздний вечер","k","g"]]],["Вещи с историей в вашем доме - это...",[["Обязательно: семейные реликвии и антиквариат","r"],["Одна-две, как акцент","k"],["Предпочитаю новое и чистое","g"],["Важнее природные материалы: камень, дерево, растения","n"]]],["Какой звук у вас ассоциируется с домом?",[["Тишина","t"],["Смех детей и шум кухни","o"],["Джаз на виниле","k"],["Дождь и ветер в деревьях","n"]]],["Что вам не нравится в чужих интерьерах?",[["Перегруз и пестрота","t","g"],["Холодная гостиничная обстановка","o"],["Случайные вещи и дешёвые материалы","r"],["Мало света и воздуха","n"]]],["Как вы принимаете важные решения?",[["Долго взвешиваю, мне нужна ясность","t"],["Советуюсь с семьёй","o"],["Быстро и по фактам","g"],["Беру решение и ответственность на себя","k"]]],["Каким должен быть ваш дом через 10 лет?",[["Местом, где можно выдохнуть","t","n"],["Домом, где собирается вся семья","o"],["Отражением моего вкуса и статуса","r","k"],["Пространством, которое не надоест","g"]]]];
 var CNT='Вопрос {i} из 12';
+/* Подписи, которых нет в разметке страницы */
+var RU_EXTRA={
+ m_t_zamer:'Запись на бесплатный замер', m_t_meet:'Назначить встречу', m_t_cons:'Записаться на консультацию',
+ r_zamer:'Бесплатный замер', r_proj:'Проект, похожий на «{x}»', r_srv:'Услуга: {x}', r_tar:'Тариф «{x}»', r_nadzor:'Авторское сопровождение', r_quiz:'Паспорт интерьера', r_contact:'Встреча в студии или замер',
+ v_phone:'Укажите номер телефона полностью: +7 и 10 цифр', v_name:'Укажите, как к вам обращаться', v_type:'Выберите тип помещения', v_agree:'Подтвердите согласие на обработку персональных данных',
+ pn_spa:'SPA-комплекс', pal_word:'Палитра', lb_of:'из', s1_h:'Квартиры', s2_h:'Загородные дома', s3_h:'Пентхаусы', s4_h:'Коммерция', s5_h:'Офисы и кабинеты', t1_h:'Базовый', t2_h:'Стандарт', t3_h:'Бизнес', nz_h:'Авторское сопровождение', pass_t:'Паспорт интерьера'
+};
 
 /* Словари kk и en лежат в assets/lang и грузятся только по выбору языка */
-var ASSET_V=((doc.currentScript&&doc.currentScript.src.match(/[?&]v=([^&]+)/))||[])[1]||'';
+var me=doc.currentScript;
+var ASSET_V=((me&&me.src.match(/[?&]v=([^&]+)/))||[])[1]||'';
+var BASE=me?me.src.replace(/script\.js.*$/,''):'';
 var I18N={};
-var lang='ru', RU={}, RUL={}, RUA={}, RU_META={t:doc.title,d:(doc.querySelector('meta[name="description"]')||{}).content||''};
+var lang='ru', RU={}, RUL={}, RUA={}, RUPH={}, RU_META={t:doc.title,d:(doc.querySelector('meta[name="description"]')||{}).content||''};
 function D(){return lang==='ru'?null:I18N[lang]}
-function tv(k){var d=D();return d?(d.t[k]!=null?d.t[k]:RU[k]):RU[k]}
-function wTpl(k){var d=D();return d?d.w[k]:W[k]}
+function tv(k){var d=D(), v=d?d.t[k]:null; if(v==null) v=RU[k]; if(v==null) v=RU_EXTRA[k]; return v}
+function wTpl(k){var d=D();return (d&&d.w[k])||W[k]}
 function qText(i){var d=D();return d?d.qs[i][0]:QS[i][0]}
 function aText(i,a){var d=D();return d?d.qs[i][1][a]:QS[i][1][a][0]}
 function pv(k,f){var d=D();return d?d.p[k][f]:P[k][f]}
 function palName(k,ix){var d=D();return d?d.p[k].pal[ix]:P[k].pal[ix][1]}
+function projName(k){return P[k].proj||tv('pn_spa')}
 function loadLang(l,done){
   if(l==='ru'||I18N[l]) return done();
   var s=doc.createElement('script');
-  s.src='assets/lang/'+l+'.js'+(ASSET_V?'?v='+ASSET_V:'');
+  s.src=BASE+'assets/lang/'+l+'.js'+(ASSET_V?'?v='+ASSET_V:'');
   s.onload=function(){var d=l==='kk'?window.SITE_KK:window.SITE_EN; if(d) I18N[l]=d; done()};
   s.onerror=function(){done()};
   doc.head.appendChild(s);
@@ -46,6 +48,7 @@ function loadLang(l,done){
 function setLang(l){l=(l==='kk'||l==='en')?l:'ru'; loadLang(l,function(){applyLang((l==='ru'||I18N[l])?l:'ru')})}
 function waUrl(txt){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(txt)}
 
+var hooks=[];
 function applyLang(l){
   lang=l;
   root.lang=lang;
@@ -61,22 +64,107 @@ function applyLang(l){
     var v=d?d.t[k]:(RUA[k+'|'+(el.id||'')]||RU[k]);
     if(v) el.setAttribute('aria-label',v);
   });
-  var d=D();
-  doc.title=d?d.t.meta_title:RU_META.t;
-  var md=doc.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',d?d.t.meta_desc:RU_META.d);
+  doc.querySelectorAll('[data-i-ph]').forEach(function(el){
+    var k=el.getAttribute('data-i-ph'), d=D(), v=d?d.t[k]:RUPH[k];
+    if(v) el.setAttribute('placeholder',v);
+  });
+  var d=D(), sfx=PAGE==='home'?'':'_'+PAGE;
+  doc.title=d?(d.t['meta_title'+sfx]||RU_META.t):RU_META.t;
+  var md=doc.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',d?(d.t['meta_desc'+sfx]||RU_META.d):RU_META.d);
   doc.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===lang))});
   doc.querySelectorAll('[data-wa]').forEach(function(a){
-    var m=WA_MAP[a.dataset.wa]||['gen'], x=m[1]||'';
-    if(x&&RU[x]!=null) x=tv(x);
-    a.href=waUrl(wTpl(m[0]).replace('{x}',x));
+    var k=a.getAttribute('data-wa'), x=a.getAttribute('data-x');
+    a.href=waUrl(wTpl(k).replace('{x}',x?tv(x):''));
   });
   try{localStorage.setItem('yd-lang',lang)}catch(e){}
-  if(Q) Q.render(true);
-  if(HERO) HERO.repaint();
-  if(PST) PST.repaint();
+  hooks.forEach(function(f){f()});
 }
 
-var Q=null;
+/* ===== Формы заявки ===== */
+function digits(v){return (v||'').replace(/\D/g,'')}
+function vmsg(el){
+  if(el.name==='phone'){var n=digits(el.value).length;return (n<10||n>12)?tv('v_phone'):''}
+  if(el.type==='checkbox') return el.checked?'':tv('v_agree');
+  if(el.tagName==='SELECT') return el.value?'':tv('v_type');
+  if(el.required&&!el.value.trim()) return tv('v_name');
+  return '';
+}
+function initValidation(f){
+  var els=[].slice.call(f.querySelectorAll('[required]'));
+  function chk(el){el.setCustomValidity(vmsg(el))}
+  els.forEach(function(el){chk(el);el.addEventListener(el.type==='checkbox'||el.tagName==='SELECT'?'change':'input',function(){chk(el)})});
+  hooks.push(function(){els.forEach(chk)});
+}
+function fieldText(sel){return sel&&sel.value?sel.options[sel.selectedIndex].text.trim():''}
+function initLeadForm(f){
+  if(!f) return;
+  initValidation(f);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(f.querySelector('.hp').value) return;
+    var g=function(n){var el=f.querySelector('[name='+n+']');return el?el.value.trim():''};
+    var reason=g('reason')||(f.id==='c-form'?tv('r_contact'):(doc.getElementById('m-title')||{}).textContent||'');
+    var txt=wTpl('form').replace('{r}',reason).replace('{n}',g('name')).replace('{p}',g('phone'))
+      .replace('{o}',fieldText(f.querySelector('[name=room_type]'))).replace('{q}',g('passport'));
+    var area=g('area');
+    txt=txt.split('\n').filter(function(line){return !(/\{a\}/.test(line)&&!area)}).join('\n').replace('{a}',area);
+    window.open(waUrl(txt.replace(/\n+$/,'')),'_blank','noopener');
+    f.querySelector('.fm-ok').hidden=false;
+  });
+}
+
+/* Окно заявки */
+var MODAL=null;
+function initModal(){
+  var m=doc.getElementById('lead-modal'); if(!m) return;
+  var f=m.querySelector('form'), title=m.querySelector('.modal-t'), last=null, cur=null;
+  var rWrap=f.querySelector('.fld-reason'), rIn=f.querySelector('[name=reason]'),
+      pWrap=f.querySelector('.fld-pass'), pIn=f.querySelector('[name=passport]'),
+      room=f.querySelector('[name=room_type]'), phone=f.querySelector('[name=phone]');
+  function paint(){
+    if(!cur) return;
+    title.textContent=tv('m_t_'+cur.kind);
+    var r='';
+    if(cur.reason==='proj') r=tv('r_proj').replace('{x}',cur.x==='SPA-комплекс'?tv('pn_spa'):cur.x);
+    else if(cur.reason==='srv'||cur.reason==='tar') r=tv('r_'+cur.reason).replace('{x}',tv(cur.x));
+    else if(cur.reason) r=tv('r_'+cur.reason);
+    rIn.value=r; rWrap.hidden=!r||cur.kind==='zamer';
+    pWrap.hidden=!cur.pass; pIn.value=cur.pass||'';
+  }
+  function open(o,btn){
+    cur=o; last=btn||doc.activeElement;
+    f.querySelector('.fm-ok').hidden=true;
+    room.value=o.room||''; room.dispatchEvent(new Event('change'));
+    if(o.phone){phone.value=o.phone; phone.dispatchEvent(new Event('input'))}
+    paint();
+    m.hidden=false; body.classList.add('modal-open');
+    setTimeout(function(){(f.querySelector('[name=name]')).focus({preventScroll:true})},60);
+  }
+  function close(){m.hidden=true; body.classList.remove('modal-open'); if(last&&last.focus) last.focus({preventScroll:true})}
+  m.addEventListener('click',function(e){if(e.target.closest('[data-close]'))close()});
+  doc.addEventListener('keydown',function(e){
+    if(m.hidden) return;
+    if(e.key==='Escape') close();
+    if(e.key==='Tab'){
+      var fs=[].filter.call(m.querySelectorAll('button,input:not([type=hidden]):not(.hp),select,textarea,a[href]'),function(x){return x.offsetParent!==null});
+      if(!fs.length) return;
+      if(e.shiftKey&&doc.activeElement===fs[0]){e.preventDefault();fs[fs.length-1].focus()}
+      else if(!e.shiftKey&&doc.activeElement===fs[fs.length-1]){e.preventDefault();fs[0].focus()}
+    }
+  });
+  doc.addEventListener('click',function(e){
+    var b=e.target.closest('[data-modal]'); if(!b) return;
+    e.preventDefault();
+    var menu=doc.getElementById('menu'); if(menu&&!menu.hidden&&MENU) MENU(false);
+    var kind=b.getAttribute('data-modal');
+    open({kind:kind,reason:b.getAttribute('data-reason')||(kind==='zamer'?'zamer':''),x:b.getAttribute('data-x')||'',room:b.getAttribute('data-room')||''},b);
+  });
+  hooks.push(paint);
+  initLeadForm(f);
+  MODAL=open;
+}
+
+/* ===== Паспорт интерьера ===== */
 function initQuiz(){
   var box=doc.querySelector('.qz'); if(!box) return;
   var grid=box.closest('.qz-grid')||box.parentNode, pass=grid.querySelector('.pass');
@@ -85,11 +173,13 @@ function initQuiz(){
       num=pass.querySelector('.pass-n b'), sw=pass.querySelector('.pass-sw'), res=box.querySelector('.qz-res');
   var ans=[], cur=0, i;
   for(i=0;i<12;i++) sw.appendChild(doc.createElement('span'));
-  function color(qi,a){var o=QS[qi][1][a];return P[o[1]].sw[qi%3]}
+  /* цвет ответа = цвет из палитры его профиля; у каждого вопроса свой цвет профиля */
+  var CI=[2,1,3,0,2,4,1,3,0,2,1,3];
+  function cref(qi,a){var o=QS[qi][1][a];return [o[1],CI[qi]]}
+  function color(qi,a){var r=cref(qi,a);return P[r[0]].pal[r[1]][0]}
   function paint(){
     var ss=sw.children, n=ans.filter(function(x){return x!=null}).length;
-    /* До первого ответа показываем образец паспорта: палитра «Резиденции» и «Тёплого очага» */
-    var smp=n===0, SM=['#F2EDE5','#D9CCB9','#B48F5E','#8C6F55','#5F4C3D','#2F2620','#D2B48C','#9A6B47','#6E7552','#E3DACD','#FFCD2A','#C8B9A3'];
+    var smp=n===0, SM=['#EFE6D6','#D6C7AE','#B48F4E','#6B4532','#151413','#F1E2C8','#D9A85B','#8A5A3A','#6E7552','#DCD3C4','#FFCD2A','#9AA58A'];
     grid.classList.toggle('started',!smp);
     pass.classList.toggle('smp',smp);
     for(var j=0;j<12;j++){
@@ -129,33 +219,47 @@ function initQuiz(){
     },380);
   }
   back.addEventListener('click',function(){if(cur>0){cur--;showQ(true)}});
-  function winner(){
+  /* счёт профилей: основной ответ 2 балла, второй профиль 1 */
+  function ranking(){
     var sc={t:0,o:0,g:0,r:0,n:0,k:0}, last={};
     ans.forEach(function(a,qi){var o=QS[qi][1][a];sc[o[1]]+=2;last[o[1]]=qi;if(o[2]){sc[o[2]]+=1;last[o[2]]=Math.max(last[o[2]]||0,qi-.5)}});
-    var best='t';
-    Object.keys(sc).forEach(function(k){if(sc[k]>sc[best]||(sc[k]===sc[best]&&(last[k]||-1)>(last[best]||-1)))best=k});
-    return best;
+    return Object.keys(sc).sort(function(a,b){return (sc[b]-sc[a])||((last[b]||-1)-(last[a]||-1))});
   }
-  var prof=null;
+  /* палитра из ответов: цвета по частоте, без повторов, до 6 */
+  function palette(){
+    var cnt={}, order=[];
+    ans.forEach(function(a,qi){var r=cref(qi,a), k=r.join(':'); if(!(k in cnt)){cnt[k]=0;order.push(k)} cnt[k]++});
+    order.sort(function(a,b){return cnt[b]-cnt[a]||order.indexOf(a)-order.indexOf(b)});
+    return order.slice(0,6).map(function(k){var r=k.split(':');return [r[0],+r[1]]});
+  }
+  var prof=null, second=null, pal=[];
+  function passText(){
+    return pv(prof,'name')+'. '+tv('pal_word')+': '+pal.map(function(r){return palName(r[0],r[1])}).join(', ');
+  }
   function fillRes(){
     var p=P[prof];
     res.querySelector('.res-name').textContent=pv(prof,'name');
     res.querySelector('.res-desc').textContent=pv(prof,'desc');
-    var pal=res.querySelector('.res-pal'); pal.innerHTML='';
-    p.pal.forEach(function(c,ix){
+    var box2=res.querySelector('.res-pal'); box2.innerHTML='';
+    pal.forEach(function(r,ix){
+      var c=P[r[0]].pal[r[1]][0];
       var d=doc.createElement('div'), sq=doc.createElement('i'), b=doc.createElement('b'), sm=doc.createElement('small');
-      sq.style.setProperty('--c',c[0]); sq.style.transitionDelay=(ix*90)+'ms';
-      b.textContent=palName(prof,ix); sm.textContent=c[0].replace('#','');
-      d.appendChild(sq);d.appendChild(b);d.appendChild(sm);pal.appendChild(d);
+      sq.style.setProperty('--c',c); sq.style.transitionDelay=(ix*90)+'ms';
+      b.textContent=palName(r[0],r[1]); sm.textContent=c.replace('#','');
+      d.appendChild(sq);d.appendChild(b);d.appendChild(sm);box2.appendChild(d);
     });
+    /* рекомендации: две от ведущего профиля и одна от второго */
+    var r1=pv(prof,'recs'), recs=[r1[0],r1[1],second?pv(second,'recs')[0]:r1[2]];
     var ol=res.querySelector('.res-recs'); ol.innerHTML='';
-    pv(prof,'recs').forEach(function(t){var li=doc.createElement('li');li.textContent=t;ol.appendChild(li)});
-    var img=res.querySelector('.res-fig img'); img.src='assets/img/'+p.img+'.webp'; img.alt=pv(prof,'name');
-    res.querySelector('.res-proj').textContent=p.proj;
+    recs.forEach(function(t){var li=doc.createElement('li');li.textContent=t;ol.appendChild(li)});
+    var img=res.querySelector('.res-fig img'); img.src=BASE+'assets/img/'+p.img+'.webp'; img.alt=projName(prof);
+    res.querySelector('.res-proj').textContent=projName(prof);
+    var lk=res.querySelector('.res-fig a'); if(lk) lk.href=BASE+'proekty/#'+p.href;
+    res.querySelector('#qz-res-txt').value=passText();
     try{res.querySelector('.doc-d').textContent=(function(d){function z(n){return (n<10?'0':'')+n}return z(d.getDate())+'.'+z(d.getMonth()+1)+'.'+d.getFullYear()})(new Date())}catch(e){}
   }
   function result(){
-    prof=winner(); fillRes();
+    var rk=ranking(); prof=rk[0]; second=rk[1]||null; pal=palette(); fillRes();
     box.dataset.state='res'; grid.classList.add('res'); res.hidden=false; res.classList.remove('show');
     var top=grid.getBoundingClientRect().top+window.pageYOffset-parseInt(getComputedStyle(root).scrollPaddingTop||0,10)-24;
     window.scrollTo({top:top,behavior:'auto'});
@@ -165,181 +269,127 @@ function initQuiz(){
     ans=[];cur=0;prof=null;res.hidden=true;box.dataset.state='ask';grid.classList.remove('res');paint();showQ(true);
   });
   var form=res.querySelector('.res-form');
+  initValidation(form);
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var ph=form.querySelector('[name=phone]'), err=form.querySelector('.res-err');
     if(form.querySelector('.hp').value) return;
-    var digits=ph.value.replace(/\D/g,'');
-    if(digits.length<10){err.hidden=false;ph.focus();return}
-    err.hidden=true;
-    var p=P[prof];
-    var txt=wTpl('quiz').replace('{x}',pv(prof,'name')).replace('{c}',p.pal.map(function(c,ix){return palName(prof,ix)+' '+c[0]}).join(', ')).replace('{p}',ph.value.trim());
+    var ph=form.querySelector('[name=phone]');
+    var txt=wTpl('quiz').replace('{x}',pv(prof,'name')).replace('{c}',pal.map(function(r){return palName(r[0],r[1])+' '+P[r[0]].pal[r[1]][0]}).join(', ')).replace('{p}',ph.value.trim());
     window.open(waUrl(txt),'_blank','noopener');
     form.querySelector('.fm-ok').hidden=false;
   });
-  paint(); showQ(false);
-  Q={render:function(){ if(box.dataset.state==='res'&&prof) fillRes(); else showQ(false); }};
-}
-
-/* Заявка */
-function initForm(){
-  var f=doc.getElementById('lead-form'); if(!f) return;
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var ph=f.querySelector('[name=phone]'), err=f.querySelector('.res-err');
-    if(f.querySelector('.hp').value) return;
-    if(ph.value.replace(/\D/g,'').length<10){err.hidden=false;ph.focus();return}
-    err.hidden=true;
-    var sel=f.querySelector('select');
-    var svc=[].map.call(f.querySelectorAll('[name=svc]:checked'),function(c){return c.nextElementSibling.textContent.trim()}).join(', ')||'-';
-    var txt=wTpl('form').replace('{p}',ph.value.trim()).replace('{s}',svc)
-      .replace('{o}',sel.options[sel.selectedIndex].text).replace('{a}',f.querySelector('[name=area]').value.trim()||'-');
-    window.open(waUrl(txt),'_blank','noopener');
-    f.querySelector('.fm-ok').hidden=false;
+  form.querySelector('.qz-talk').addEventListener('click',function(e){
+    if(MODAL) MODAL({kind:'cons',reason:'quiz',pass:passText(),phone:form.querySelector('[name=phone]').value},e.currentTarget);
   });
+  paint(); showQ(false);
+  hooks.push(function(){ if(box.dataset.state==='res'&&prof) fillRes(); else showQ(false); });
 }
 
 /* Меню */
+var MENU=null;
 function initMenu(){
   var b=doc.querySelector('.burger'), m=doc.getElementById('menu'); if(!b||!m) return;
   function set(open){
     m.hidden=!open; b.setAttribute('aria-expanded',String(open));
-    doc.body.classList.toggle('menu-open',open);
+    body.classList.toggle('menu-open',open);
   }
+  MENU=set;
   b.addEventListener('click',function(){set(m.hidden)});
   m.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
   doc.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){set(false);b.focus()}});
-  /* порог бургера = порог меню = 1120px (styles.css) */
-  window.addEventListener('resize',function(){if(window.innerWidth>1120&&!m.hidden)set(false)});
+  /* порог бургера = порог меню = 1200px (styles.css) */
+  window.addEventListener('resize',function(){if(window.innerWidth>1200&&!m.hidden)set(false)});
 }
 
-/* Лента проектов */
-function initLane(){
-  var lane=doc.querySelector('.lane'), nav=doc.querySelector('.lane-nav'); if(!lane||!nav) return;
-  var prev=nav.querySelector('[data-dir="-1"]'), next=nav.querySelector('[data-dir="1"]');
-  function upd(){
-    var max=lane.scrollWidth-lane.clientWidth;
-    nav.hidden=max<4;
-    prev.disabled=lane.scrollLeft<4;
-    next.disabled=lane.scrollLeft>max-4;
-  }
-  function step(dir){
-    var cards=lane.querySelectorAll('.card'), gap=parseFloat(getComputedStyle(lane).columnGap)||24;
-    var x=lane.scrollLeft, w=cards[0].getBoundingClientRect().width+gap;
-    for(var i=0;i<cards.length;i++){var cw=cards[i].offsetLeft-lane.offsetLeft;if(dir>0&&cw>x+8){w=cw-x;break}}
-    if(dir<0){var t=0;for(var j=cards.length-1;j>=0;j--){var cl=cards[j].offsetLeft-lane.offsetLeft;if(cl<x-8){t=cl;break}}w=x-t}
-    lane.scrollBy({left:dir*w,behavior:'smooth'});
-  }
-  prev.addEventListener('click',function(){step(-1)});
-  next.addEventListener('click',function(){step(1)});
-  lane.addEventListener('scroll',upd,{passive:true});
-  window.addEventListener('resize',upd);
-  lane.querySelectorAll('img').forEach(function(im){im.addEventListener('load',upd)});
-  upd();
-}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Герой: проекты сменяют друг друга, палитра перетекает */
+/* Первый экран: кадры проектов сменяют друг друга */
 var HERO=null;
 function initHero(){
   var pic=doc.getElementById('hero-pic'); if(!pic) return;
-  var slides=pic.querySelectorAll('.hs'), tabs=doc.querySelectorAll('.hero-tabs [data-hs]'),
-      pal=doc.querySelectorAll('.pal-hero li'), sets=doc.querySelectorAll('.hero-paldata ul'),
-      link=doc.querySelector('.hero-cap-link'), fig=doc.querySelector('.hero-fig');
-  if(slides.length<2||!sets.length) return;
-  var cur=0, timer=null, hold=false, loaded=false, started=false, DUR=7000;
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function load(){if(loaded)return;loaded=true;pic.querySelectorAll('img[data-src]').forEach(function(im){im.src=im.getAttribute('data-src');im.removeAttribute('data-src')})}
-  var palUl=doc.querySelector('.pal-hero'), swapT=null;
-  pal.forEach(function(li,k){li.style.setProperty('--d',(k*60)+'ms')});
-  function paintPal(i,anim){
-    if(anim&&palUl&&!reduce){
-      palUl.classList.add('ready','swap'); clearTimeout(swapT);
-      swapT=setTimeout(function(){fill(i);requestAnimationFrame(function(){palUl.classList.remove('swap')})},420+pal.length*60);
-      if(link) link.setAttribute('href',sets[i].getAttribute('data-href'));
-      return;
-    }
-    fill(i);
-  }
-  function fill(i){
-    var items=sets[i].children;
-    pal.forEach(function(li,k){
-      var src=items[k]; if(!src) return;
-      var c=src.style.getPropertyValue('--c').trim(), key=src.getAttribute('data-i');
-      li.style.setProperty('--c',c);
-      var sp=li.querySelector('span'), sm=li.querySelector('small');
-      if(sp){sp.setAttribute('data-i',key); sp.textContent=tv(key)||src.textContent}
-      if(sm) sm.textContent=c.replace('#','');
-    });
-    if(link) link.setAttribute('href',sets[i].getAttribute('data-href'));
-  }
+  var slides=pic.querySelectorAll('.hs'), dots=doc.querySelectorAll('.hero-dots i'), media=pic.parentNode;
+  if(slides.length<2) return;
+  var cur=0, timer=null, hold=false, started=false, DUR=6500;
   function run(){
-    tabs.forEach(function(t){t.classList.remove('run')});
     clearTimeout(timer);
     if(!started||reduce||hold||doc.hidden) return;
-    var t=tabs[cur]; if(t){void t.offsetWidth; t.classList.add('run')}
     timer=setTimeout(function(){go((cur+1)%slides.length)},DUR);
   }
   function go(i){
-    load();
     var img=slides[i].querySelector('img');
     function show(){
-      slides.forEach(function(s,k){s.classList.toggle('on',k===i)});
-      tabs.forEach(function(t,k){t.setAttribute('aria-selected',String(k===i));t.tabIndex=k===i?0:-1});
-      cur=i; paintPal(i,true); run();
+      slides.forEach(function(s,k){s.classList.toggle('on',k===i);s.tabIndex=k===i?0:-1});
+      dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+      cur=i; run();
     }
-    if(img&&!img.complete){img.addEventListener('load',show,{once:true});img.addEventListener('error',show,{once:true})} else show();
+    if(img&&!img.complete){img.loading='eager';img.addEventListener('load',show,{once:true});img.addEventListener('error',show,{once:true})} else show();
   }
-  tabs.forEach(function(t,k){t.addEventListener('click',function(){if(k!==cur)go(k)})});
-  if(fig){
-    fig.addEventListener('mouseenter',function(){hold=true;run()});
-    fig.addEventListener('mouseleave',function(){hold=false;run()});
-    fig.addEventListener('focusin',function(){hold=true;run()});
-    fig.addEventListener('focusout',function(){hold=false;run()});
-  }
+  media.querySelectorAll('[data-hd]').forEach(function(b){b.addEventListener('click',function(){go((cur+(+b.getAttribute('data-hd'))+slides.length)%slides.length)})});
+  media.addEventListener('mouseenter',function(){hold=true;run()});
+  media.addEventListener('mouseleave',function(){hold=false;run()});
+  media.addEventListener('focusin',function(){hold=true;run()});
+  media.addEventListener('focusout',function(){hold=false;run()});
+  var sx=null;
+  media.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  media.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)go((cur+(dx<0?1:-1)+slides.length)%slides.length)},{passive:true});
   doc.addEventListener('visibilitychange',run);
-  /* вне экрана не крутим */
-  if('IntersectionObserver' in window){new IntersectionObserver(function(en){var v=en[0].isIntersecting;if(v!==!hold){hold=!v;run()}}).observe(pic)}
-  HERO={start:function(){setTimeout(function(){started=true;load();run()},2200)},repaint:function(){paintPal(cur)}};
+  if('IntersectionObserver' in window){new IntersectionObserver(function(en){hold=!en[0].isIntersecting;run()}).observe(media)}
+  HERO={start:function(){setTimeout(function(){started=true;slides.forEach(function(s){var im=s.querySelector('img');if(im)im.loading='eager'});run()},1800)}};
 }
 
-/* Липкая палитра проектов */
-var PAL_RU={pal_calacatta:'Калакатта',pal_silver:'Серебро',pal_ash:'Пепел',pal_patina:'Патина',pal_wenge:'Венге'};
-var PST=null;
-function initPstick(){
-  var bar=doc.querySelector('.pstick'); if(!bar) return;
-  var arts=doc.querySelectorAll('[data-pal]'), ul=bar.querySelector('.pal-stick'),
-      nb=bar.querySelector('.pstick-name b'), ns=bar.querySelector('.pstick-name span');
-  if(!arts.length) return;
-  var cur=-1, i;
-  for(i=0;i<6;i++){var li=doc.createElement('li'); li.appendChild(doc.createElement('span')); ul.appendChild(li)}
-  function nm(k){var v=tv(k); return v!=null?v:(PAL_RU[k]||'')}
-  function set(ix,force){
-    if(ix===cur&&!force) return;
-    var a=arts[ix], items=a.getAttribute('data-pal').split(','), first=cur<0;
-    cur=ix;
-    items.forEach(function(it,k){
-      var pr=it.split(':'), li=ul.children[k]; if(!li) return;
-      li.style.setProperty('--c',pr[0]);
-      li.querySelector('span').textContent=nm(pr[1]);
-    });
-    if(first||force){nb.textContent=a.getAttribute('data-pname');ns.textContent=tv('pal_aria')||'Палитра проекта'}
-    else {bar.classList.add('sw');setTimeout(function(){nb.textContent=a.getAttribute('data-pname');ns.textContent=tv('pal_aria')||'Палитра проекта';bar.classList.remove('sw')},260)}
+/* Избранные проекты: листаются сами, со стрелками */
+function initFeat(){
+  var tr=doc.querySelector('.feat-track'), nav=doc.querySelector('.feat-nav'); if(!tr||!nav) return;
+  var prev=nav.querySelector('[data-dir="-1"]'), next=nav.querySelector('[data-dir="1"]'), timer=null, auto=!reduce, vis=false;
+  function idx(){return Math.round(tr.scrollLeft/tr.clientWidth)}
+  function n(){return tr.children.length}
+  function to(i){tr.scrollTo({left:i*tr.clientWidth,behavior:reduce?'auto':'smooth'})}
+  function upd(){prev.disabled=tr.scrollLeft<4;next.disabled=tr.scrollLeft>tr.scrollWidth-tr.clientWidth-4}
+  function run(){clearTimeout(timer); if(!auto||!vis||doc.hidden) return; timer=setTimeout(function(){var i=idx()+1;to(i>=n()?0:i);run()},6500)}
+  function stop(){auto=false;clearTimeout(timer)}
+  prev.addEventListener('click',function(){stop();to(Math.max(0,idx()-1))});
+  next.addEventListener('click',function(){stop();to(Math.min(n()-1,idx()+1))});
+  ['pointerdown','wheel','keydown'].forEach(function(ev){tr.addEventListener(ev,stop,{passive:true})});
+  tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();to(Math.min(n()-1,idx()+1))}if(e.key==='ArrowLeft'){e.preventDefault();to(Math.max(0,idx()-1))}});
+  tr.addEventListener('mouseenter',function(){clearTimeout(timer)});
+  tr.addEventListener('mouseleave',run);
+  tr.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',function(){upd()});
+  doc.addEventListener('visibilitychange',run);
+  if('IntersectionObserver' in window){new IntersectionObserver(function(en){vis=en[0].isIntersecting;run()},{threshold:.35}).observe(tr)}
+  upd();
+}
+
+/* Просмотр фото на странице проектов */
+function initLightbox(){
+  var lb=doc.getElementById('lb'); if(!lb) return;
+  var img=lb.querySelector('.lb-img'), num=lb.querySelector('.lb-n'), list=[], cur=0, last=null;
+  function show(i){
+    cur=(i+list.length)%list.length; var a=list[cur];
+    img.src=a.getAttribute('href'); img.alt=a.querySelector('img').alt;
+    num.textContent=(cur+1)+' '+tv('lb_of')+' '+list.length+' · '+a.closest('.pj').querySelector('h3').textContent.split(' - ')[0];
+    var nx=list[(cur+1)%list.length]; (new Image()).src=nx.getAttribute('href');
   }
-  var tick=false;
-  function upd(){
-    tick=false;
-    var mid=window.innerHeight*.5, best=0;
-    for(var k=0;k<arts.length;k++){if(arts[k].getBoundingClientRect().top<mid) best=k}
-    set(best);
-  }
-  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
-  set(0); upd();
-  PST={repaint:function(){set(cur,true)}};
+  function close(){lb.hidden=true;body.classList.remove('modal-open');if(last)last.focus({preventScroll:true})}
+  doc.querySelectorAll('.gal').forEach(function(g){
+    var items=[].slice.call(g.querySelectorAll('.gal-it'));
+    items.forEach(function(a,i){a.addEventListener('click',function(e){
+      e.preventDefault(); list=items; last=a; lb.hidden=false; body.classList.add('modal-open'); show(i); lb.querySelector('.lb-x').focus({preventScroll:true});
+    })});
+  });
+  lb.querySelector('.lb-x').addEventListener('click',close);
+  lb.querySelector('.lb-p').addEventListener('click',function(){show(cur-1)});
+  lb.querySelector('.lb-nx').addEventListener('click',function(){show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  doc.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1)});
+  var sx=null;
+  lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){if(sx==null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1))},{passive:true});
 }
 
 /* Проявление кадров */
 function initReveal(){
-  var els=doc.querySelectorAll('.rv,.pal:not(.pal-hero)');
+  var els=doc.querySelectorAll('.rv');
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.05});
   els.forEach(function(e){io.observe(e)});
@@ -349,8 +399,9 @@ function initReveal(){
 doc.querySelectorAll('[data-i]').forEach(function(el){RU[el.getAttribute('data-i')]=el.textContent});
 doc.querySelectorAll('[data-i-list]').forEach(function(ul){RUL[ul.getAttribute('data-i-list')]=[].map.call(ul.children,function(li){return li.textContent})});
 doc.querySelectorAll('[data-i-aria]').forEach(function(el){var k=el.getAttribute('data-i-aria');RUA[k+'|'+(el.id||'')]=el.getAttribute('aria-label')});
+doc.querySelectorAll('[data-i-ph]').forEach(function(el){RUPH[el.getAttribute('data-i-ph')]=el.getAttribute('placeholder')});
 
-initQuiz(); initForm(); initMenu(); initLane(); initReveal(); initHero(); initPstick();
+initMenu(); initModal(); initLeadForm(doc.getElementById('c-form')); initQuiz(); initHero(); initFeat(); initLightbox(); initReveal();
 
 var startLang='ru';
 try{
@@ -361,25 +412,27 @@ try{
 setLang(startLang);
 doc.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
 
-/* Свет в герое включается после загрузки кадра */
-var hero=doc.querySelector('.hero-pic img');
-var litDone=false;
-function lit(){if(litDone)return;litDone=true;requestAnimationFrame(function(){doc.body.classList.add('lit');if(HERO)HERO.start()})}
-/* Переход по якорю или прокрученная страница - интро героя пропускаем */
-if(location.hash||window.pageYOffset>80){doc.body.classList.add('lit','no-intro')}
-
-/* Липкая панель: после ~55% первого экрана, прячется на блоке контактов */
+/* Липкая панель на телефоне: после части первого экрана, прячется на блоке контактов */
 (function(){
   var bar=doc.querySelector('.mbar'), heroEl=doc.querySelector('.hero'), cont=doc.getElementById('kontakty'); if(!bar) return;
   var tick=false;
   function upd(){
     tick=false;
-    var h=heroEl?heroEl.offsetHeight:600, y=window.pageYOffset, vh=window.innerHeight;
+    var h=heroEl?heroEl.offsetHeight*.55:240, vh=window.innerHeight;
     var inC=cont?cont.getBoundingClientRect().top<vh*.6:false;
-    bar.classList.toggle('on',y>h*.55&&!inC);
+    bar.classList.toggle('on',window.pageYOffset>h&&!inC);
   }
   window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
   upd();
 })();
-if(hero&&!hero.complete){hero.addEventListener('load',lit);hero.addEventListener('error',lit);setTimeout(lit,1800)} else lit();
+
+/* Свет в герое включается после загрузки кадра */
+var hero=doc.querySelector('.hs.on img');
+var litDone=false;
+function lit(){if(litDone)return;litDone=true;requestAnimationFrame(function(){body.classList.add('lit');if(HERO)HERO.start()})}
+if(!hero){body.classList.add('lit');}
+else {
+  if(location.hash||window.pageYOffset>80){body.classList.add('lit','no-intro')}
+  if(!hero.complete){hero.addEventListener('load',lit);hero.addEventListener('error',lit);setTimeout(lit,1800)} else lit();
+}
 })();
