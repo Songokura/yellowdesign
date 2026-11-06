@@ -190,7 +190,7 @@ window.SITE_EN={
   "mb_aria": "Quick contact",
   "lb_aria": "Photo viewer",
   "pp_h": "Studio projects",
-  "pp_lead": "Apartments in premium residences, country houses and commercial interiors in Astana, Almaty, Burabay, Karaganda and Shymkent. Click a photo to open it large.",
+  "pp_lead": "Apartments in premium residences, country houses and commercial interiors in Astana, Almaty, Burabay, Karaganda and Shymkent. Choose a project and click a photo to open it large.",
   "pp_s1": "Apartments and houses",
   "pp_s2": "Commercial interiors",
   "pp_cta_h": "Let's discuss your project",
@@ -245,7 +245,10 @@ window.SITE_EN={
   "meta_title_uslugi": "Services - design projects for apartments, houses and commercial spaces | Yellow Design",
   "meta_desc_uslugi": "Design projects for apartments, country houses, penthouses, commercial premises and offices in Astana. Procurement and author's support, free measurement.",
   "meta_title_politika": "Privacy policy - Yellow Design",
-  "meta_desc_politika": "How the Yellow Design studio processes personal data from website requests."
+  "meta_desc_politika": "How the Yellow Design studio processes personal data from website requests.",
+  "pp_prev": "Previous project",
+  "pp_next": "Next project",
+  "pp_other": "Other projects"
  },
  "w": {
   "gen": "Hello! I would like to discuss an interior project.",

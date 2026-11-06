@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,500;1,400&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261106-3">
+<link rel="stylesheet" href="../styles.css?v=20261106-4">
 <script src="https://lead-bot.sultan-askarov-kz.workers.dev/t.js" data-site="yellowdesign" defer></script>
 </head>
 <body data-page="proekty">
@@ -94,21 +94,29 @@
 
 <main>
 
-<section class="pg-head">
+<section class="pg-head pp-head">
   <div class="wrap">
     <h1 data-i="pp_h">Проекты студии</h1>
-    <p class="lead" data-i="pp_lead">Квартиры в домах премиум-класса, загородные дома и коммерческие интерьеры в Астане, Алматы, Боровом, Караганде и Шымкенте. Нажмите на фото, чтобы открыть его крупно.</p>
-    <nav class="chips" aria-label="Проекты" data-i-aria="nav_projects"><a href="#theone">ЖК The ONE</a><a href="#parkside">ЖК Parkside</a><a href="#vela">Vela Village</a><a href="#dara">ЖК Dara Residence</a><a href="#aqua">ЖК Green Line Aqua</a><a href="#spa">SPA-комплекс</a></nav>
+    <p class="lead" data-i="pp_lead">Квартиры в домах премиум-класса, загородные дома и коммерческие интерьеры в Астане, Алматы, Боровом, Караганде и Шымкенте. Выберите проект, нажмите на фото, чтобы открыть его крупно.</p>
+    <div class="ptabs" id="ptabs">
+      <div class="ptg ptg-home">
+        <p class="ptg-h" data-i="pp_s1">Квартиры и дома</p>
+        <div class="ptg-list" role="tablist" aria-label="Квартиры и дома" data-i-aria="pp_s1"><a class="pt" id="tab-theone" href="#theone" role="tab" aria-selected="true" aria-controls="theone"><span class="pt-img"><img src="../assets/img/g/theone-01-s.webp" alt="" width="360" height="270" loading="eager" decoding="async"></span><span class="pt-name">ЖК The ONE</span></a><a class="pt" id="tab-parkside" href="#parkside" role="tab" aria-selected="false" aria-controls="parkside" tabindex="-1"><span class="pt-img"><img src="../assets/img/g/parkside-01-s.webp" alt="" width="360" height="270" loading="eager" decoding="async"></span><span class="pt-name">ЖК Parkside</span></a><a class="pt" id="tab-vela" href="#vela" role="tab" aria-selected="false" aria-controls="vela" tabindex="-1"><span class="pt-img"><img src="../assets/img/g/vela-01-s.webp" alt="" width="360" height="270" loading="eager" decoding="async"></span><span class="pt-name">Vela Village</span></a><a class="pt" id="tab-dara" href="#dara" role="tab" aria-selected="false" aria-controls="dara" tabindex="-1"><span class="pt-img"><img src="../assets/img/g/dara-01-s.webp" alt="" width="360" height="270" loading="lazy" decoding="async"></span><span class="pt-name">ЖК Dara Residence</span></a><a class="pt" id="tab-aqua" href="#aqua" role="tab" aria-selected="false" aria-controls="aqua" tabindex="-1"><span class="pt-img"><img src="../assets/img/g/aqua-01-s.webp" alt="" width="360" height="270" loading="lazy" decoding="async"></span><span class="pt-name">ЖК Green Line Aqua</span></a></div>
+      </div>
+      <div class="ptg ptg-biz">
+        <p class="ptg-h" data-i="pt_biz">Коммерция</p>
+        <div class="ptg-list" role="tablist" aria-label="Коммерческие интерьеры" data-i-aria="pp_s2"><a class="pt" id="tab-spa" href="#spa" role="tab" aria-selected="false" aria-controls="spa" tabindex="-1"><span class="pt-img"><img src="../assets/img/g/spa-02-s.webp" alt="" width="360" height="270" loading="lazy" decoding="async"></span><span class="pt-name">SPA-комплекс</span></a></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="pj-sec" aria-labelledby="pp-h1">
+<section class="pj-sec">
   <div class="wrap">
-  <h2 class="pj-sec-h" id="pp-h1" data-i="pp_s1">Квартиры и дома</h2>
-  <article class="pj" id="theone">
+  <article class="pj" id="theone" role="tabpanel" aria-labelledby="tab-theone">
     <div class="pj-head">
       <p class="spread-type" data-i="pt_kv">Квартира</p>
-      <h3 data-i="p_theone_h">ЖК The ONE - архитектура сильного характера</h3>
+      <h2 data-i="p_theone_h">ЖК The ONE - архитектура сильного характера</h2>
       <p class="pj-txt" data-i="p_theone_t">Современный интерьер, построенный на контрасте монументальных форм, выразительных фактур и сдержанной цветовой палитры. Бетон, тёмное дерево и металл создают архитектурную глубину, а продуманный свет смягчает строгость пространства.</p>
       <button class="link pj-cta" type="button" data-modal="cons" data-reason="proj" data-x="ЖК The ONE" data-room="Квартира"><span data-i="proj_like">Обсудить похожий проект</span><svg width="16" height="16"><use href="#ic-arr"/></svg></button>
     </div>
@@ -123,11 +131,15 @@
       <a class="gal-it" href="../assets/img/g/theone-08.webp" data-w="1234" data-h="1346"><img src="../assets/img/g/theone-08-s.webp" width="720" height="785" loading="lazy" decoding="async" alt="Кабинет с письменным столом, хрустальной люстрой и рельефным панно"></a>
       <a class="gal-it" href="../assets/img/g/theone-09.webp" data-w="1333" data-h="1346"><img src="../assets/img/g/theone-09-s.webp" width="720" height="727" loading="lazy" decoding="async" alt="Зона приёма гостей в кабинете: кожаные кресла и круглое панно"></a>
     </div>
+    <nav class="pj-nav" aria-label="Другие проекты" data-i-aria="pp_other">
+      <a class="pj-go pj-prev" href="#spa"><svg width="20" height="20"><use href="#ic-back"/></svg><span><small data-i="pp_prev">Предыдущий проект</small><b>SPA-комплекс</b></span></a>
+      <a class="pj-go pj-next" href="#parkside"><span><small data-i="pp_next">Следующий проект</small><b>ЖК Parkside</b></span><svg width="20" height="20"><use href="#ic-arr"/></svg></a>
+    </nav>
   </article>
-<article class="pj" id="parkside">
+<article class="pj" id="parkside" role="tabpanel" aria-labelledby="tab-parkside" hidden>
     <div class="pj-head">
       <p class="spread-type" data-i="pt_kv">Квартира</p>
-      <h3 data-i="p_parkside_h">ЖК Parkside - спокойствие в точной линии</h3>
+      <h2 data-i="p_parkside_h">ЖК Parkside - спокойствие в точной линии</h2>
       <p class="pj-txt" data-i="p_parkside_t">Квартира, где порядок становится частью красоты. Скруглённые стены и ниши с подсветкой ведут из прихожей в гостиную, тёплый шпон связывает комнаты в одно целое, а системы хранения спрятаны за единой линией фасадов.</p>
       <button class="link pj-cta" type="button" data-modal="cons" data-reason="proj" data-x="ЖК Parkside" data-room="Квартира"><span data-i="proj_like">Обсудить похожий проект</span><svg width="16" height="16"><use href="#ic-arr"/></svg></button>
     </div>
@@ -148,11 +160,15 @@
       <a class="gal-it" href="../assets/img/g/parkside-14.webp" data-w="1600" data-h="1280"><img src="../assets/img/g/parkside-14-s.webp" width="720" height="576" loading="lazy" decoding="async" alt="Комната в зелёных тонах с диваном и рабочим местом"></a>
       <a class="gal-it" href="../assets/img/g/parkside-15.webp" data-w="1280" data-h="1600"><img src="../assets/img/g/parkside-15-s.webp" width="720" height="900" loading="lazy" decoding="async" alt="Рабочее место у окна в зелёной комнате"></a>
     </div>
+    <nav class="pj-nav" aria-label="Другие проекты" data-i-aria="pp_other">
+      <a class="pj-go pj-prev" href="#theone"><svg width="20" height="20"><use href="#ic-back"/></svg><span><small data-i="pp_prev">Предыдущий проект</small><b>ЖК The ONE</b></span></a>
+      <a class="pj-go pj-next" href="#vela"><span><small data-i="pp_next">Следующий проект</small><b>Vela Village</b></span><svg width="20" height="20"><use href="#ic-arr"/></svg></a>
+    </nav>
   </article>
-<article class="pj" id="vela">
+<article class="pj" id="vela" role="tabpanel" aria-labelledby="tab-vela" hidden>
     <div class="pj-head">
       <p class="spread-type" data-i="pt_dom">Загородный дом</p>
-      <h3 data-i="p_vela_h">Vela Village - национальный код в современном доме</h3>
+      <h2 data-i="p_vela_h">Vela Village - национальный код в современном доме</h2>
       <p class="pj-txt" data-i="p_vela_t">Загородный дом, в котором казахский орнамент звучит современно: резные панели в гостиной, мрамор на кухонном острове, свет, собранный в графичные линии. У каждой детской свой характер - лунная стена, звёздный потолок, неоновый рисунок над кроватью.</p>
       <button class="link pj-cta" type="button" data-modal="cons" data-reason="proj" data-x="Vela Village" data-room="Дом/таунхаус"><span data-i="proj_like">Обсудить похожий проект</span><svg width="16" height="16"><use href="#ic-arr"/></svg></button>
     </div>
@@ -169,11 +185,15 @@
       <a class="gal-it" href="../assets/img/g/vela-10.webp" data-w="1188" data-h="1600"><img src="../assets/img/g/vela-10-s.webp" width="668" height="900" loading="lazy" decoding="async" alt="Гардеробная со стеклянными фасадами и подсветкой"></a>
       <a class="gal-it" href="../assets/img/g/vela-11.webp" data-w="1533" data-h="1600"><img src="../assets/img/g/vela-11-s.webp" width="720" height="751" loading="lazy" decoding="async" alt="Кабинет с тёмным столом и ковром в чёрно-белый горох"></a>
     </div>
+    <nav class="pj-nav" aria-label="Другие проекты" data-i-aria="pp_other">
+      <a class="pj-go pj-prev" href="#parkside"><svg width="20" height="20"><use href="#ic-back"/></svg><span><small data-i="pp_prev">Предыдущий проект</small><b>ЖК Parkside</b></span></a>
+      <a class="pj-go pj-next" href="#dara"><span><small data-i="pp_next">Следующий проект</small><b>ЖК Dara Residence</b></span><svg width="20" height="20"><use href="#ic-arr"/></svg></a>
+    </nav>
   </article>
-<article class="pj" id="dara">
+<article class="pj" id="dara" role="tabpanel" aria-labelledby="tab-dara" hidden>
     <div class="pj-head">
       <p class="spread-type" data-i="pt_kv">Квартира</p>
-      <h3 data-i="p_dara_h">ЖК Dara Residence - неоклассика в мягком свете</h3>
+      <h2 data-i="p_dara_h">ЖК Dara Residence - неоклассика в мягком свете</h2>
       <p class="pj-txt" data-i="p_dara_t">Мраморная стена с камином задаёт парадный тон гостиной, а рельефные панели с плавным рисунком переходят из кухни в спальни. Латунь и тонкие подвесные светильники делают классику лёгкой.</p>
       <button class="link pj-cta" type="button" data-modal="cons" data-reason="proj" data-x="ЖК Dara Residence" data-room="Квартира"><span data-i="proj_like">Обсудить похожий проект</span><svg width="16" height="16"><use href="#ic-arr"/></svg></button>
     </div>
@@ -192,11 +212,15 @@
       <a class="gal-it" href="../assets/img/g/dara-12.webp" data-w="1428" data-h="1600"><img src="../assets/img/g/dara-12-s.webp" width="720" height="807" loading="lazy" decoding="async" alt="Коридор с мраморной отделкой и молдингами"></a>
       <a class="gal-it" href="../assets/img/g/dara-13.webp" data-w="1428" data-h="1600"><img src="../assets/img/g/dara-13-s.webp" width="720" height="807" loading="lazy" decoding="async" alt="Гостиная с аркой и перегородками из тонированного стекла"></a>
     </div>
+    <nav class="pj-nav" aria-label="Другие проекты" data-i-aria="pp_other">
+      <a class="pj-go pj-prev" href="#vela"><svg width="20" height="20"><use href="#ic-back"/></svg><span><small data-i="pp_prev">Предыдущий проект</small><b>Vela Village</b></span></a>
+      <a class="pj-go pj-next" href="#aqua"><span><small data-i="pp_next">Следующий проект</small><b>ЖК Green Line Aqua</b></span><svg width="20" height="20"><use href="#ic-arr"/></svg></a>
+    </nav>
   </article>
-<article class="pj" id="aqua">
+<article class="pj" id="aqua" role="tabpanel" aria-labelledby="tab-aqua" hidden>
     <div class="pj-head">
       <p class="spread-type" data-i="pt_kv">Квартира</p>
-      <h3 data-i="p_aqua_h">ЖК Green Line Aqua - светлая классика</h3>
+      <h2 data-i="p_aqua_h">ЖК Green Line Aqua - светлая классика</h2>
       <p class="pj-txt" data-i="p_aqua_t">Белый мрамор, молдинги и хрусталь собирают лёгкий парадный интерьер. Овальный стол и арка задают ритм гостиной-столовой, а детские решены каждая в своём характере - от нежно-розовой спальни до комнаты с картой мира.</p>
       <button class="link pj-cta" type="button" data-modal="cons" data-reason="proj" data-x="ЖК Green Line Aqua" data-room="Квартира"><span data-i="proj_like">Обсудить похожий проект</span><svg width="16" height="16"><use href="#ic-arr"/></svg></button>
     </div>
@@ -209,17 +233,15 @@
       <a class="gal-it" href="../assets/img/g/aqua-06.webp" data-w="1200" data-h="1600"><img src="../assets/img/g/aqua-06-s.webp" width="675" height="900" loading="lazy" decoding="async" alt="Прихожая с хрустальной люстрой и плиткой в шахматном порядке"></a>
       <a class="gal-it" href="../assets/img/g/aqua-07.webp" data-w="1249" data-h="1600"><img src="../assets/img/g/aqua-07-s.webp" width="703" height="900" loading="lazy" decoding="async" alt="Гардеробная со стеклянными фасадами и подсветкой"></a>
     </div>
+    <nav class="pj-nav" aria-label="Другие проекты" data-i-aria="pp_other">
+      <a class="pj-go pj-prev" href="#dara"><svg width="20" height="20"><use href="#ic-back"/></svg><span><small data-i="pp_prev">Предыдущий проект</small><b>ЖК Dara Residence</b></span></a>
+      <a class="pj-go pj-next" href="#spa"><span><small data-i="pp_next">Следующий проект</small><b>SPA-комплекс</b></span><svg width="20" height="20"><use href="#ic-arr"/></svg></a>
+    </nav>
   </article>
-  </div>
-</section>
-
-<section class="pj-sec pj-biz dark" aria-labelledby="pp-h2">
-  <div class="wrap">
-  <h2 class="pj-sec-h" id="pp-h2" data-i="pp_s2">Коммерческие интерьеры</h2>
-  <article class="pj" id="spa">
+<article class="pj" id="spa" role="tabpanel" aria-labelledby="tab-spa" hidden>
     <div class="pj-head">
       <p class="spread-type" data-i="pt_biz">Коммерция</p>
-      <h3 data-i="p_spa_h">SPA-комплекс - камень, свет и тишина</h3>
+      <h2 data-i="p_spa_h">SPA-комплекс - камень, свет и тишина</h2>
       <p class="pj-txt" data-i="p_spa_t">Пространство для полного переключения: фактурный камень на стенах, круглые световые формы и тёплое дерево ведут гостя от ресепшн через лаундж к кабинетам массажа, хаммаму и сауне.</p>
       <button class="link pj-cta" type="button" data-modal="cons" data-reason="proj" data-x="SPA-комплекс" data-room="Коммерция"><span data-i="proj_like_biz">Обсудить коммерческий проект</span><svg width="16" height="16"><use href="#ic-arr"/></svg></button>
     </div>
@@ -237,6 +259,10 @@
       <a class="gal-it" href="../assets/img/g/spa-11.webp" data-w="1080" data-h="977"><img src="../assets/img/g/spa-11-s.webp" width="720" height="651" loading="lazy" decoding="async" alt="Душевая с каменной отделкой"></a>
       <a class="gal-it" href="../assets/img/g/spa-12.webp" data-w="1136" data-h="1280"><img src="../assets/img/g/spa-12-s.webp" width="720" height="811" loading="lazy" decoding="async" alt="Сауна с деревянными полками и подсветкой"></a>
     </div>
+    <nav class="pj-nav" aria-label="Другие проекты" data-i-aria="pp_other">
+      <a class="pj-go pj-prev" href="#aqua"><svg width="20" height="20"><use href="#ic-back"/></svg><span><small data-i="pp_prev">Предыдущий проект</small><b>ЖК Green Line Aqua</b></span></a>
+      <a class="pj-go pj-next" href="#theone"><span><small data-i="pp_next">Следующий проект</small><b>ЖК The ONE</b></span><svg width="20" height="20"><use href="#ic-arr"/></svg></a>
+    </nav>
   </article>
   </div>
 </section>
@@ -300,6 +326,6 @@
   <a class="mbar-ig" href="https://www.instagram.com/yellow_design_kz/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22"><use href="#ic-ig"/></svg></a>
 </nav>
 
-<script src="../script.js?v=20261106-3" defer></script>
+<script src="../script.js?v=20261106-4" defer></script>
 </body>
 </html>
