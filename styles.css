@@ -125,12 +125,12 @@ figure{margin:0}
 .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);height:100%}
 .hero-media{position:relative;min-height:0;overflow:hidden;background:var(--stone)}
 .hero-pic{position:absolute;inset:0;clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease-out)}
-.lit .hero-pic{clip-path:inset(0 0 0 0)}
+.pic-in .hero-pic{clip-path:inset(0 0 0 0)}
 .hs{position:absolute;inset:0;display:block;opacity:0;transition:opacity 1.3s var(--ease);text-decoration:none}
 .hs.on{opacity:1;z-index:1}
 .hs picture{position:absolute;inset:0;transition:transform 1.1s var(--ease-out)}
 .hs img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.07);transition:transform 9s linear}
-.lit .hs.on img{transform:none}
+.pic-in .hs.on img{transform:none}
 .hs::after{content:"";position:absolute;inset:auto 0 0 0;height:34%;background:linear-gradient(0deg,rgba(20,18,16,.55),rgba(20,18,16,0));pointer-events:none}
 .hs-cap{position:absolute;left:40px;bottom:36px;z-index:2;font:400 clamp(20px,1.7vw,26px)/1.2 var(--serif);color:#fff;letter-spacing:-.005em}
 @media (hover:hover) and (pointer:fine){.hs:hover picture{transform:scale(1.025)}}

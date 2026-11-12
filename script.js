@@ -440,11 +440,35 @@ function initMotion(){
   var E=bez(.2,.7,.2,1), T3=1, STG=.08;
   var MOB=window.matchMedia('(max-width:760px)').matches;
   var $$=function(q,r){return [].slice.call((r||doc).querySelectorAll(q))};
+  /* Появление не зависит от пересчёта ScrollTrigger: элемент проявляется, как только он
+     на экране или уже выше него (переход по якорю с другой страницы, прыжок меню, прокрутка вверх).
+     Ждать загрузки картинок и шрифтов не нужно. */
+  var pend=[], sweepQ=false;
+  function onceVis(el,fn,batch){pend.push({el:el,fn:fn,b:batch})}
+  function sweep(){
+    sweepQ=false; if(!pend.length) return;
+    var vh=window.innerHeight, bat=[], above=[];
+    pend=pend.filter(function(p){
+      var r=p.el.getBoundingClientRect();
+      if(!r.width&&!r.height) return true;
+      if(r.bottom<0){ if(p.b) above.push(p.el); else p.fn(true); return false } /* выше экрана - сразу, без ожидания */
+      if(r.top<vh*.94){ if(p.b) bat.push(p.el); else p.fn(); return false }
+      return true;
+    });
+    if(above.length) G.set(above,{y:0,autoAlpha:1,overwrite:true});
+    if(bat.length) G.to(bat,{y:0,autoAlpha:1,duration:.9,ease:E,stagger:Math.min(STG,.6/bat.length),overwrite:true});
+  }
+  function qSweep(){if(!sweepQ){sweepQ=true;requestAnimationFrame(sweep)}}
+  window.YD_SWEEP=qSweep;
+  window.addEventListener('scroll',qSweep,{passive:true});
+  window.addEventListener('resize',qSweep);
+  window.addEventListener('hashchange',qSweep);
+  window.addEventListener('pageshow',qSweep);
 
   /* плавная прокрутка */
   if(window.Lenis){
     LENIS=new window.Lenis({lerp:.1,smoothWheel:true});
-    LENIS.on('scroll',ST.update);
+    LENIS.on('scroll',function(){ST.update();qSweep()});
     G.ticker.add(function(t){LENIS.raf(t*1000)});
     G.ticker.lagSmoothing(0);
     /* меню, окно заявки и просмотр фото - прокрутка страницы стоит */
@@ -467,8 +491,13 @@ function initMotion(){
     $$('.head h2,.feat-head h2,.qz-side h2,.f-txt h2,.proc-txt h2,.award-txt h3,.rev-head h2,.pg-head h1,.sv-txt h2,.work h2,.pg-cta h2,.nadzor-sec h2,.how h2,.nz h2,.statement').forEach(function(h){
       var sp=new window.SplitText(h,{type:'words,lines',mask:'lines'});
       splits.push(sp);
-      G.from(sp.words,{yPercent:110,duration:T3,ease:E,stagger:.03,scrollTrigger:{trigger:h,start:'top 90%',once:true}});
-    });  }
+      var r=h.getBoundingClientRect();
+      if(r.top<window.innerHeight*.94){sp.revert();splits.pop();return} /* уже на экране или выше - не прячем */
+      var tw=G.from(sp.words,{yPercent:110,duration:T3,ease:E,stagger:.03,paused:true});
+      onceVis(h,function(now){if(now)tw.progress(1);else tw.play()});
+    });
+    qSweep();
+  }
   if(window.SplitText){ if(doc.fonts&&doc.fonts.ready) doc.fonts.ready.then(function(){doSplit();ST.refresh()}); else doSplit(); }
   /* смена языка заменяет текст - разбивку снимаем */
   preHooks.push(function(){splits.forEach(function(sp){sp.revert()});splits=[]});
@@ -477,14 +506,14 @@ function initMotion(){
   var items=$$('.head .lead,.head-row .link,.feat-head .lead,.feat-nav,.fs-cap,.feat-foot,.philo .kicker,.philo-list li,.srv-cards li,.proc-txt .lead,.steps li,.f-txt .kicker,.f-lead,.f-list li,.f-acts,.award-txt p,.qz-side .kicker,.qz-side .lead,.pass,.qz,.tier,.nadzor-row,.prices-note,.rev-rate,.rev,.c-grid .lead-form,.c-info>*,.pg-head .lead,.ptabs,.pj-head>*,.sv-txt p,.sv-acts,.work .lead,.work .btn,.work-list li,.nadzor p,.nadzor .btn,.pg-cta-acts,.pol h2,.pol p');
   items=items.filter(function(el){return !el.closest('.hero')});
   G.set(items,{y:28,autoAlpha:0});
-  ST.batch(items,{start:'top 92%',once:true,onEnter:function(b){G.to(b,{y:0,autoAlpha:1,duration:.9,ease:E,stagger:STG,overwrite:true})}});
+  items.forEach(function(el){onceVis(el,null,true)});
 
   /* кадры: раскрытие шторкой снизу и лёгкий наезд; на телефоне только проявление */
   $$('.proc-img,.f-img,.award-fig,.rev-fig,.sv-img,.c-office,.sc-img').forEach(function(fig){
     fig.classList.remove('rv');
     var img=fig.querySelector('img'); if(!img) return;
-    if(MOB){G.from(fig,{autoAlpha:0,duration:.9,ease:E,scrollTrigger:{trigger:fig,start:'top 92%',once:true}});return}
-    var tl=G.timeline({scrollTrigger:{trigger:fig,start:'top 88%',once:true}});
+    if(MOB){var tm=G.from(fig,{autoAlpha:0,duration:.9,ease:E,paused:true});onceVis(fig,function(now){if(now)tm.progress(1);else tm.play()});return}
+    var tl=G.timeline({paused:true}); onceVis(fig,function(now){if(now)tl.progress(1);else tl.play()});
     tl.fromTo(fig,{clipPath:'inset(18% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:1.2,ease:E})
       .fromTo(img,{scale:1.12},{scale:1,duration:1.6,ease:E},0);
   });
@@ -496,21 +525,22 @@ function initMotion(){
   /* шаги процесса: номер загорается по очереди */
   $$('.steps li').forEach(function(li){
     var n=li.querySelector('.n'); if(!n) return;
-    G.fromTo(n,{opacity:.25},{opacity:1,duration:.4,ease:E,scrollTrigger:{trigger:li,start:'top 75%',once:true}});
+    var tn=G.fromTo(n,{opacity:.25},{opacity:1,duration:.4,ease:E,paused:true}); onceVis(li,function(now){if(now)tn.progress(1);else tn.play()});
   });
   /* лента «Наши проекты» проявляется при входе блока */
   var feat=doc.querySelector('.feat-track');
-  if(feat) G.from(feat,{autoAlpha:0,y:40,duration:1.2,ease:E,scrollTrigger:{trigger:feat,start:'top 88%',once:true}});
+  if(feat){var tf=G.from(feat,{autoAlpha:0,y:40,duration:1.2,ease:E,paused:true}); onceVis(feat,function(now){if(now)tf.progress(1);else tf.play()})}
   /* страница проектов: кадры открытого проекта ложатся по очереди */
   function panel(p){
     if(!p) return;
     var g=(p.querySelector('.gal')._items||$$('.gal-it',p)).slice(0,12);
     G.fromTo(g,{y:36,autoAlpha:0},{y:0,autoAlpha:1,duration:.9,ease:E,stagger:.05,overwrite:true,clearProps:'transform'});
-    requestAnimationFrame(function(){ST.refresh()});
+    requestAnimationFrame(function(){ST.refresh();qSweep()});
   }
   window.YD_PANEL=panel;
   var open=doc.querySelector('.pj:not([hidden])'); if(open) panel(open);
-  window.addEventListener('load',function(){ST.refresh()});
+  window.addEventListener('load',function(){ST.refresh();qSweep()});
+  qSweep(); setTimeout(qSweep,250);
 }
 
 
@@ -591,10 +621,12 @@ doc.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('cli
 /* Свет в герое включается после загрузки кадра */
 var hero=doc.querySelector('.hs.on img');
 var litDone=false;
-function lit(){if(litDone)return;litDone=true;requestAnimationFrame(function(){body.classList.add('lit');if(HERO)HERO.start()})}
-if(!hero){body.classList.add('lit');}
+/* текст героя показывается сразу, кадр раскрывается по загрузке (не дольше 1,2 с ожидания) */
+function lit(){if(litDone)return;litDone=true;body.classList.add('pic-in');if(HERO)HERO.start()}
+body.classList.add('lit');
+if(!hero){body.classList.add('pic-in');}
 else {
-  if(location.hash||window.pageYOffset>80){body.classList.add('lit','no-intro')}
-  if(!hero.complete){hero.addEventListener('load',lit);hero.addEventListener('error',lit);setTimeout(lit,1800)} else lit();
+  if(location.hash||window.pageYOffset>80){body.classList.add('no-intro')}
+  if(!hero.complete){hero.addEventListener('load',lit);hero.addEventListener('error',lit);setTimeout(lit,1200)} else lit();
 }
 })();
