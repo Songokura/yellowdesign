@@ -464,7 +464,7 @@ function initMotion(){
   /* заголовки секций: слова поднимаются из-под маски */
   var splits=[];
   function doSplit(){
-    $$('.head h2,.feat-head h2,.qz-side h2,.f-txt h2,.proc-txt h2,.award-txt h3,.rev-head h2,.pg-head h1,.sv-txt h2,.work h2,.pg-cta h2,.nadzor-sec h2,.how h2,.statement').forEach(function(h){
+    $$('.head h2,.feat-head h2,.qz-side h2,.f-txt h2,.proc-txt h2,.award-txt h3,.rev-head h2,.pg-head h1,.sv-txt h2,.work h2,.pg-cta h2,.nadzor-sec h2,.how h2,.nz h2,.statement').forEach(function(h){
       var sp=new window.SplitText(h,{type:'words,lines',mask:'lines'});
       splits.push(sp);
       G.from(sp.words,{yPercent:110,duration:T3,ease:E,stagger:.03,scrollTrigger:{trigger:h,start:'top 90%',once:true}});
