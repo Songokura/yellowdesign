@@ -200,6 +200,10 @@ figure{margin:0}
 
 /* Как ведём проект */
 .proc-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:88px;align-items:start}
+.proc-txt h2{font-size:clamp(28px,2.6vw,42px);line-height:1.14}
+.proc-stat{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line-d)}
+.proc-stat b{font:400 clamp(32px,3.2vw,48px)/1 var(--serif);color:var(--yellow);white-space:nowrap}
+.proc-stat span{font-size:17px;color:var(--on-dark-m)}
 .proc-txt .lead{margin-bottom:56px}
 .steps li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;padding:26px 0;border-top:1px solid var(--line-d)}
 .steps .n{font:300 26px/1.1 var(--sans);color:var(--yellow)}
@@ -466,6 +470,18 @@ figure{margin:0}
 .work-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;border-top:1px solid var(--line)}
 .work-list li{position:relative;padding:20px 0 20px 30px;border-bottom:1px solid var(--line);font-size:19px;color:var(--ink)}
 .work-list li::before{content:"";position:absolute;left:0;top:1.35em;width:16px;height:2px;background:var(--yellow-2)}
+/* Этапы дизайн-проекта на странице услуг */
+.how h2{font:400 var(--fs-h2)/1.06 var(--serif);letter-spacing:-.012em;color:var(--on-dark)}
+.how .lead{margin-top:22px}
+.how-list{margin-top:56px;border-top:1px solid var(--line-d)}
+.how-list li{display:grid;grid-template-columns:72px minmax(0,4fr) minmax(0,7fr);gap:16px 40px;padding:32px 0;border-bottom:1px solid var(--line-d)}
+.how-list .n{font:300 26px/1.1 var(--sans);color:var(--yellow)}
+.how-list h3{font:400 clamp(22px,1.8vw,28px)/1.2 var(--serif);color:var(--on-dark)}
+.how-p p{max-width:820px;font-size:18px;line-height:1.6;color:var(--on-dark-m);font-weight:300}
+.how-p p+p{margin-top:14px}
+.how-time{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:16px 40px;margin-top:56px;padding:40px;background:var(--ink-2);border-left:3px solid var(--yellow)}
+.how-time h3{font:400 var(--fs-h3)/1.1 var(--serif);color:var(--on-dark)}
+.how-time p{max-width:860px;font-size:19px;line-height:1.6;color:var(--on-dark)}
 .nadzor-sec .nadzor h2{font-size:var(--fs-h2)}
 .nadzor-sec .nadzor p{font-size:19px;max-width:none}
 
@@ -515,6 +531,9 @@ figure{margin:0}
   .philo-list{gap:32px}
 }
 @media (max-width:900px){
+  .how-list li{grid-template-columns:56px minmax(0,1fr)}
+  .how-p{grid-column:2}
+  .how-time{grid-template-columns:minmax(0,1fr)}
   :root{--sec:112px}
   .hero{height:auto;max-height:none;min-height:calc(100svh - var(--hdr))}
   .hero-grid{grid-template-columns:minmax(0,1fr);height:auto}
@@ -615,6 +634,12 @@ figure{margin:0}
   .res-pal b{font-size:11px}
   .res-pal small{display:none}
   .steps li{grid-template-columns:52px minmax(0,1fr)}
+  .how-list li{grid-template-columns:44px minmax(0,1fr);padding:26px 0}
+  .how-list .n{font-size:22px}
+  .how-p{grid-column:1/-1}
+  .how-p p{font-size:17px}
+  .how-time{grid-template-columns:minmax(0,1fr);padding:28px 22px}
+  .how-time p{font-size:17px}
   .steps .n{font-size:24px}
   .tier-price{font-size:40px}
   .nadzor .btn{width:100%}
