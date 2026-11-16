@@ -86,6 +86,10 @@ window.SITE_EN={
    "3D visualisation"
   ],
   "t2_g": "Bonus: 4 procurement trips (purchase of finishing materials)",
+  "t4_h": "Personal",
+  "t4_s": "Full-cycle interior delivery: a bespoke design project, renovation works, procurement and furnishing, logistics, designer supervision and a 1 year warranty on completed works.",
+  "t4_p": "Priced individually",
+  "t4_l": ["Personal involvement of the studio founder in key decisions", "Priority work by lead designers", "Contractor consultations"],
   "t3_h": "Business",
   "t3_s": "Bespoke concept and author's support - a turnkey project",
   "t3_l": [
