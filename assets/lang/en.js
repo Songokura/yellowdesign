@@ -108,6 +108,7 @@ window.SITE_EN={
   "f_2": "Member of the Association of Architects and Designers of Kazakhstan",
   "f_3": "Multiple finalist of international design and architecture awards",
   "f_cta": "Message the studio",
+  "f_pdf": "About us: presentation",
   "f_ig": "Studio work on Instagram",
   "c_h": "Visit our studio",
   "office_cap": "The ONE",
