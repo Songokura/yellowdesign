@@ -11,4 +11,4 @@ Disallow: /assets/lang/
 Disallow: /*lang=kk
 Disallow: /*lang=en
 
-Sitemap: https://songokura.github.io/yellowdesign/sitemap.xml
+Sitemap: https://yellowdesign.kz/sitemap.xml
