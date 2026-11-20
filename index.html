@@ -32,7 +32,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,500;1,400&family=Geologica:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/hero-one-d.webp" media="(min-width: 761px)">
 <link rel="preload" as="image" href="assets/img/hero-one-m.webp" media="(max-width: 760px)">
-<link rel="stylesheet" href="styles.css?v=20261116-3">
+<link rel="stylesheet" href="styles.css?v=20261120-1">
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-W5FBG4CQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  window.AW_CONV = {
+    phone: 'AW-18586410078/dkqCCOuQpLwdEN642J5F',
+    contact: 'AW-18586410078/bKToCNnVpbwdEN642J5F',
+    form: 'AW-18586410078/_53WCI2kpLwdEN642J5F'
+  };
+  function gtag_report_conversion(url, sendTo) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': sendTo || window.AW_CONV.phone,
+      'value': 1.0,
+      'currency': 'USD',
+      'event_callback': callback
+    });
+    return false;
+  }
+</script>
 <script src="https://lead-bot.sultan-askarov-kz.workers.dev/t.js" data-site="yellowdesign" defer></script>
 </head>
 <body data-page="home">
@@ -508,6 +533,6 @@
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/SplitText.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
-<script src="script.js?v=20261116-3" defer></script>
+<script src="script.js?v=20261120-1" defer></script>
 </body>
 </html>

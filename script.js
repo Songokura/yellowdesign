@@ -48,6 +48,17 @@ function loadLang(l,done){
 function setLang(l){l=(l==='kk'||l==='en')?l:'ru'; loadLang(l,function(){applyLang((l==='ru'||I18N[l])?l:'ru')})}
 function waUrl(txt){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(txt)}
 
+/* Конверсии Google Ads: звонок, WhatsApp, отправка формы */
+function fireConv(key){
+  if(typeof window.gtag_report_conversion!=='function'||!window.AW_CONV) return;
+  var to=window.AW_CONV[key]; if(to) window.gtag_report_conversion(undefined,to);
+}
+doc.addEventListener('click',function(e){
+  var a=e.target&&e.target.closest?e.target.closest('a[href^="tel:"], a[href*="wa.me"]'):null;
+  if(!a) return;
+  fireConv(a.getAttribute('href').indexOf('tel:')===0?'phone':'contact');
+});
+
 var hooks=[], preHooks=[];
 function applyLang(l){
   preHooks.forEach(function(f){f()});
@@ -109,6 +120,7 @@ function initLeadForm(f){
       .replace('{o}',fieldText(f.querySelector('[name=room_type]'))).replace('{q}',g('passport'));
     var area=g('area');
     txt=txt.split('\n').filter(function(line){return !(/\{a\}/.test(line)&&!area)}).join('\n').replace('{a}',area);
+    fireConv('form');
     window.open(waUrl(txt.replace(/\n+$/,'')),'_blank','noopener');
     f.querySelector('.fm-ok').hidden=false;
   });
@@ -276,6 +288,7 @@ function initQuiz(){
     if(form.querySelector('.hp').value) return;
     var ph=form.querySelector('[name=phone]');
     var txt=wTpl('quiz').replace('{x}',pv(prof,'name')).replace('{c}',pal.map(function(r){return palName(r[0],r[1])+' '+P[r[0]].pal[r[1]][0]}).join(', ')).replace('{p}',ph.value.trim());
+    fireConv('form');
     window.open(waUrl(txt),'_blank','noopener');
     form.querySelector('.fm-ok').hidden=false;
   });
